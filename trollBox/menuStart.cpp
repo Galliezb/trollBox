@@ -13,7 +13,6 @@ void menuStart::afficherMenu(){
 		// affichage du text
 		verdana.drawString( createText("Insert Coins").c_str(), 350,545);
 
-	/*************************************  ENREGISTREMENT NOM  *****************************************/
 	} else if ( etatMenu == 1 ){
 
 		verdana.drawString( createText("Insert MORE Coins").c_str(), 350,545);
@@ -25,6 +24,7 @@ void menuStart::afficherMenu(){
 		img2.draw(25,25);
 
 	}
+	/*************************************  ENREGISTREMENT NOM  *****************************************/
 }
 
 string menuStart::createText(string str){
