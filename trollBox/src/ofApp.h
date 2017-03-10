@@ -1,7 +1,7 @@
 #pragma once
 #include "ofMain.h"
 
-#include "../menuStart.h"
+#include "classes/headers/menuStart.h"
 
 
 class ofApp : public ofBaseApp{
