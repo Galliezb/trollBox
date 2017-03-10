@@ -13,7 +13,7 @@
     <ClCompile Include="src\ofApp.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\classes\menuStart.cpp">
+    <ClCompile Include="src\menuStart.cpp">
       <Filter>src\classes</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,7 +32,7 @@
     <ClInclude Include="src\ofApp.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\classes\headers\menuStart.h">
+    <ClInclude Include="src\menuStart.h">
       <Filter>src\classes</Filter>
     </ClInclude>
   </ItemGroup>
