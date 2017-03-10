@@ -30,7 +30,9 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-
+	// simule la première insertion de pièce
+	menuPrincipal.etatMenu++;
+	if ( menuPrincipal.etatMenu > 2 ){ menuPrincipal.etatMenu = 0; }
 }
 
 //--------------------------------------------------------------
@@ -45,10 +47,6 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-
-	// simule la première insertion de pièce
-	menuPrincipal.etatMenu++;
-	if ( menuPrincipal.etatMenu > 2 ){ menuPrincipal.etatMenu = 0; }
 
 }
 
