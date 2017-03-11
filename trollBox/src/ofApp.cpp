@@ -9,17 +9,43 @@ void ofApp::setup(){
 	// init classe
 	menuPrincipal.init();
 
+	// conf serial connection
+	coSerial.setup("/dev/ttyACM0", 9600);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 
+	int monByte = 0;
+	monByte = coSerial.readByte();
+
+	if ( monByte == OF_SERIAL_NO_DATA ){
+
+		printf("Aucune data reçu, alors on communique : \n");
+
+		monByte = 9;
+		bool byteWasWritten = coSerial.writeByte(monByte);
+		if ( !byteWasWritten ){
+			printf("byte was not written to serial port");
+		} else {
+			printf("Bytes (%d) correctement envoyé",monByte);
+		}
+
+	} else if ( monByte == OF_SERIAL_ERROR ){
+
+		printf("an error occurred");
+
+	} else {
+
+		printf("myByte is %d", monByte);
+		//ofLog() << "myByte is %d" <<  myByte;
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
 
-	menuPrincipal.afficherMenu();
+	//menuPrincipal.afficherMenu();
 
 }
 
