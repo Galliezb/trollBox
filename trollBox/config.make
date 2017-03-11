@@ -142,5 +142,5 @@
 # PROJECT_CC = 
 
 
-HEADERS += menStart.h
-SOURCES += menuStart.cpp
+#HEADERS += menStart.h
+#SOURCES += menuStart.cpp
