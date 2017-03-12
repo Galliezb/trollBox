@@ -28,6 +28,6 @@ class ofApp : public ofBaseApp{
 		ofTrueTypeFont	verdana;
 		string serialSend,serialRecieve;
 		int byteToSend;
-		unsigned int tpsByteToSend;
+		unsigned int tpsByteToSend,tpsByteRecieve;
 		
 };
