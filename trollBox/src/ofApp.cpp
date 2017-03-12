@@ -33,6 +33,7 @@ void ofApp::update(){
 	if ( coSerial.available() ){
 
 		monByte = coSerial.readByte();
+		printf("Byte recu : %d",monByte);
 
 		if ( monByte == OF_SERIAL_NO_DATA ){
 
