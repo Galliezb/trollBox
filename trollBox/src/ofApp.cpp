@@ -63,9 +63,9 @@ void ofApp::update(){
 		// essai d'envoyer un byte
 		bool byteWasWritten = coSerial.writeByte(byteToSend);
 		if ( !byteWasWritten ){
-			serialSend = "ERROR BYTE NON ENVOYE";
+			serialSend = "Byte envoye : ERROR BYTE NON ENVOYE";
 		} else {
-			serialSend = byteToSend;
+			serialSend = "Byte envoye : " + ofToString(byteToSend);
 		}
 		byteToSend++;
 		if ( byteToSend > 9 ){ byteToSend = 0; }
