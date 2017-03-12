@@ -25,10 +25,6 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
 
-	// nettoyage des string
-	serialSend.clear();
-	serialRecieve.clear();
-
 	/*************** RECEPTION UN BYTE SI PRESENT **********************/
 	int monByte = 0;
 	
@@ -53,10 +49,11 @@ void ofApp::update(){
 			}
 
 		}
-
+		// string to display
+		serialRecieve = "Byte recu : " + serialRecieve;
 
 	} else {
-		serialRecieve = "En attente de reception";
+		serialRecieve = "Byte recu : En attente de reception";
 	}
 
 	
@@ -76,12 +73,11 @@ void ofApp::update(){
 		// reset timer
 		tpsByteToSend = ofGetElapsedTimeMillis();
 
+		// string to display
+		serialSend = "Byte envoye : " + serialSend;
+
 	}
 
-
-	/************* CREATION DES STRINGS A AFFICHER ****************/
-	serialSend = "Byte envoye : " + serialSend;
-	serialRecieve = "Byte recu : " + serialRecieve;
 }
 
 //--------------------------------------------------------------
