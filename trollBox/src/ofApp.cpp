@@ -57,10 +57,10 @@ void ofApp::update(){
 	}
 
 	float diff = ofGetElapsedTimeMillis() - tpsByteRecieve / 1000;
-	if ( serialRecieve.length < 1 ){
-		serialRecieve = "Dernier byte recu : en attente ( " + ofToString(diff) + " s )";
+	if ( serialRecieve.length() < 1 ){
+		serialRecieve = "Dernier byte recu : en attente ( " + ofToString(diff) + " ms )";
 	} else {
-		serialRecieve = serialtoTransmit + "( " + ofToString(diff) + " s )";
+		serialRecieve = serialtoTransmit + "( " + ofToString(diff) + " ms )";
 	}
 
 	
