@@ -11,41 +11,82 @@ void ofApp::setup(){
 
 	// conf serial connection
 	coSerial.setup("/dev/ttyACM0", 9600);
+
+	// police d'affichage
+	verdana.load("verdana.ttf", 30, true, true);
+	verdana.setLineHeight(34.0f);
+	verdana.setLetterSpacing(1.035);
+
+	// init byteToSend
+	byteToSend = 0;
+	tpsByteToSend = ofGetElapsedTimeMillis();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 
+	/*************** RECEPTION UN BYTE SI PRESENT **********************/
 	int monByte = 0;
-	monByte = coSerial.readByte();
+	
+	if ( coSerial.available() ){
 
-	if ( monByte == OF_SERIAL_NO_DATA ){
+		monByte = coSerial.readByte();
 
-		printf("Aucune data reçu, alors on communique : \n");
+		if ( monByte == OF_SERIAL_NO_DATA ){
 
-		monByte = 9;
-		bool byteWasWritten = coSerial.writeByte(monByte);
-		if ( !byteWasWritten ){
-			printf("byte was not written to serial port");
+			serialRecieve = "OFF";
+
+		} else if ( monByte == OF_SERIAL_ERROR ){
+
+			serialRecieve = "ERROR";
+
 		} else {
-			printf("Bytes (%d) correctement envoyé",monByte);
+
+			serialRecieve = monByte;
+
+			if ( monByte == 5){
+				exit();
+			}
+
 		}
 
-	} else if ( monByte == OF_SERIAL_ERROR ){
-
-		printf("an error occurred");
 
 	} else {
-
-		printf("myByte is %d", monByte);
-		//ofLog() << "myByte is %d" <<  myByte;
+		serialRecieve = "En attente de réception";
 	}
+
+	
+	/*************** ENVOI UN BYTE TOUTES LES SECONDES **********************/
+	if (  tpsByteToSend+1000 < ofGetElapsedTimeMillis() ){
+
+		// essai d'envoyer un byte
+		bool byteWasWritten = coSerial.writeByte(byteToSend);
+		if ( !byteWasWritten ){
+			serialSend = "ERROR BYTE NON ENVOYE";
+		} else {
+			serialSend = byteToSend;
+		}
+		byteToSend++;
+		if ( byteToSend > 9 ){ byteToSend = 0; }
+
+		// reset timer
+		tpsByteToSend = ofGetElapsedTimeMillis();
+
+	}
+
+
+	/************* CREATION DES STRINGS A AFFICHER ****************/
+	serialSend = "Byte envoyé : " + serialSend;
+	serialRecieve = "Byte reçu : " + serialRecieve;
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
 
 	//menuPrincipal.afficherMenu();
+	verdana.drawString( serialSend, 50,150);
+	verdana.drawString( serialRecieve, 50,545);
+
 
 }
 
