@@ -45,7 +45,7 @@ void ofApp::update(){
 
 		} else {
 
-			serialtoTransmit = "Dernier byte recu : " + monByte;
+			serialtoTransmit = "Dernier byte recu : " + ofToString(monByte);
 
 		}
 
