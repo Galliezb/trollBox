@@ -33,7 +33,7 @@ void ofApp::update(){
 	if ( coSerial.available() ){
 
 		monByte = coSerial.readByte();
-		printf("Byte recu : %d",monByte);
+		ofLog()<< "byte recu :" << ofToString(monByte);
 
 		if ( monByte == OF_SERIAL_NO_DATA ){
 
@@ -46,10 +46,6 @@ void ofApp::update(){
 		} else {
 
 			serialtoTransmit = "Dernier byte recu : " + monByte;
-
-			if ( monByte == 5){
-				exit();
-			}
 
 		}
 
