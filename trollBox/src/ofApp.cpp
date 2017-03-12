@@ -25,6 +25,10 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
 
+	// nettoyage des string
+	serialSend.clear();
+	serialRecieve.clear();
+
 	/*************** RECEPTION UN BYTE SI PRESENT **********************/
 	int monByte = 0;
 	
