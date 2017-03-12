@@ -28,7 +28,7 @@ void ofApp::update(){
 
 	/*************** RECEPTION UN BYTE SI PRESENT **********************/
 	int monByte = 0;
-	string serialtoTransmit;
+	
 	
 	if ( coSerial.available() ){
 
@@ -44,7 +44,7 @@ void ofApp::update(){
 
 		} else {
 
-			serialtoTransmit = "Dernier byte recu : "+monByte;
+			serialtoTransmit = "Dernier byte recu : " + monByte;
 
 			if ( monByte == 5){
 				exit();
@@ -58,9 +58,9 @@ void ofApp::update(){
 
 	float diff = ofGetElapsedTimeMillis() - tpsByteRecieve / 1000;
 	if ( serialRecieve.length() < 1 ){
-		serialRecieve = "Dernier byte recu : en attente ( " + ofToString(diff) + " ms )";
+		serialRecieve = "Dernier byte recu : en attente ( " + ofToString(round(diff/1000)) + " s )";
 	} else {
-		serialRecieve = serialtoTransmit + "( " + ofToString(diff) + " ms )";
+		serialRecieve = serialtoTransmit + "( " + ofToString(round(diff/1000)) + " s )";
 	}
 
 	
