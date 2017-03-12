@@ -73,9 +73,6 @@ void ofApp::update(){
 		// reset timer
 		tpsByteToSend = ofGetElapsedTimeMillis();
 
-		// string to display
-		serialSend = "Byte envoye : " + serialSend;
-
 	}
 
 }
