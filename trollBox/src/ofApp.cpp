@@ -52,7 +52,7 @@ void ofApp::update(){
 
 
 	} else {
-		serialRecieve = "En attente de réception";
+		serialRecieve = "En attente de reception";
 	}
 
 	
@@ -76,8 +76,8 @@ void ofApp::update(){
 
 
 	/************* CREATION DES STRINGS A AFFICHER ****************/
-	serialSend = "Byte envoyé : " + serialSend;
-	serialRecieve = "Byte reçu : " + serialRecieve;
+	serialSend = "Byte envoye : " + serialSend;
+	serialRecieve = "Byte recu : " + serialRecieve;
 }
 
 //--------------------------------------------------------------

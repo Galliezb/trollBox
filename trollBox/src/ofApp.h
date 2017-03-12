@@ -27,6 +27,7 @@ class ofApp : public ofBaseApp{
 		ofSerial coSerial;
 		ofTrueTypeFont	verdana;
 		string serialSend,serialRecieve;
-		int byteToSend,tpsByteToSend;
+		int byteToSend;
+		unsigned int tpsByteToSend;
 		
 };
