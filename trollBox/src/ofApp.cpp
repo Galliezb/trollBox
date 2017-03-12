@@ -33,19 +33,18 @@ void ofApp::update(){
 	if ( coSerial.available() ){
 
 		monByte = coSerial.readByte();
-		ofLog()<< "byte recu :" << ofToString(monByte);
 
 		if ( monByte == OF_SERIAL_NO_DATA ){
 
-			serialtoTransmit = "Dernier byte recu : OFF";
+			serialtoTransmit = "Valeur du dernier byte recu : OFF";
 
 		} else if ( monByte == OF_SERIAL_ERROR ){
 
-			serialtoTransmit = "Dernier byte recu : ERROR";
+			serialtoTransmit = "Valeur du dernier byte recu : ERROR";
 
 		} else {
 
-			serialtoTransmit = "Dernier byte recu : " + ofToString(monByte);
+			serialtoTransmit = "Valeur du dernier byte recu : " + ofToString(monByte);
 
 		}
 
@@ -53,11 +52,11 @@ void ofApp::update(){
 
 	}
 
-	float diff = ofGetElapsedTimeMillis() - tpsByteRecieve / 1000;
+	float diff = round((ofGetElapsedTimeMillis() - tpsByteRecieve) / 1000);
 	if ( serialRecieve.length() < 1 ){
-		serialRecieve = "Dernier byte recu : en attente ( " + ofToString(round(diff/1000)) + " s )";
+		serialRecieve = "Valeur du dernier byte recu : en attente ( " + ofToString(diff) + " s )";
 	} else {
-		serialRecieve = serialtoTransmit + "( " + ofToString(round(diff/1000)) + " s )";
+		serialRecieve = serialtoTransmit + "( " + ofToString(diff) + " s )";
 	}
 
 	
