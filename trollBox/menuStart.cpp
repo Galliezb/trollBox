@@ -13,7 +13,7 @@ void menuStart::afficherMenu(){
 		// affichage du text
 		verdana.drawString( createText("Insert Coins").c_str(), 350,545);
 
-	/*************************************  ENREGISTREMENT NOM  *****************************************/
+	
 	} else if ( etatMenu == 1 ){
 
 		verdana.drawString( createText("Insert MORE Coins").c_str(), 350,545);
@@ -24,7 +24,83 @@ void menuStart::afficherMenu(){
 		verdana.drawString( createText("Insert MORE MORE Coins").c_str(), 350,545);
 		img2.draw(25,25);
 
+	/*************************************  ENREGISTREMENT NOM  *****************************************/
+	} else if ( etatMenu == 3 ){
+	
+		// MAJ 65-90
+		// MIN 97-122
+		// 32 = espace
+		// 45 = -
+
+		string descr = "Insert your name";
+
+		verdana.drawString( descr.c_str() , 150,545);
+		verdana.drawString( createName() , 250,585);
+		verdana.drawString( "_ _ _ _ _ _ _ _ _ _" , 275,585);
+
+	} else if ( etatMenu = 4 ){
+		verdana.drawString( createName() , 350,545);
 	}
+}
+
+void menuStart::changeNameLeft(){
+
+	nameIndexCharacter-=2;
+	if ( nameIndexCharacter < 0 ){ nameIndexCharacter=0; };
+
+	if ( name[nameIndexCharacter] != ' ' ){
+		nameNumberOfLetter = name[nameIndexCharacter];
+	} else {
+		nameNumberOfLetter = 65;
+	}
+
+}
+
+void menuStart::changeNameRight(){
+
+	nameIndexCharacter+=2;
+	if ( nameIndexCharacter > 18 ){ nameIndexCharacter=18; };
+
+	if ( name[nameIndexCharacter] != ' ' ){
+		nameNumberOfLetter = name[nameIndexCharacter];
+	} else {
+		nameNumberOfLetter = 65;
+	}
+
+}
+
+void menuStart::changeLetter(){
+
+
+	// MAJ 65-90
+	// MIN 97-122
+	// 32 = espace
+	// 45 = -
+
+	ofLog() << "nameNumberOfletter : " << nameNumberOfLetter;
+	ofLog() << "nameIndexCharacter : " << nameIndexCharacter;
+	
+	if ( nameNumberOfLetter == 90 ){
+		nameNumberOfLetter = 32;
+	} else if ( nameNumberOfLetter == 32 ){
+		nameNumberOfLetter = 45;
+	} else if ( nameNumberOfLetter == 45 ){
+		nameNumberOfLetter = 65;
+	} else {
+		nameNumberOfLetter++;
+	}
+
+	name[nameIndexCharacter] = nameNumberOfLetter;
+}
+
+string menuStart::createName(){
+
+	string str;
+	for ( int i=0; i<20; i++){
+		str+=name[i];
+	}
+
+	return string();
 }
 
 string menuStart::createText(string str){
@@ -57,6 +133,7 @@ string menuStart::createText(string str){
 	return strToReturn;
 }
 
+
 void menuStart::init(){
 
 	verdana.load("verdana.ttf", 30, true, true);
@@ -68,10 +145,6 @@ void menuStart::init(){
 
 	tps = ofGetElapsedTimef();
 
-}
-
-void menuStart::setEtatMenu(int v){
-	etatMenu=v;
 }
 
 
