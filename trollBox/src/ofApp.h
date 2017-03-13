@@ -1,7 +1,7 @@
 #pragma once
 #include "ofMain.h"
 
-#include "../menuStart.h"
+#include "menuStart.h"
 
 
 class ofApp : public ofBaseApp{
@@ -24,5 +24,10 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 
 		menuStart menuPrincipal;
+		ofSerial coSerial;
+		ofTrueTypeFont	verdana;
+		string serialSend,serialRecieve,serialtoTransmit;;
+		int byteToSend;
+		unsigned int tpsByteToSend,tpsByteRecieve;
 		
 };
