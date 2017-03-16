@@ -28,14 +28,15 @@ public:
 
 private:
 	
-	bool etatPiece = false;
+	bool etatPiece = false, etatBlinkLettrer = false;
 	int etatPoints=0;
-	float tps;
+	float tpsBlinkPoint;
 	// 20 espace, mode bourrin
 	char name[20] = {'A',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
 	float tpsLettre = ofRandom( 0.4f, 2.0f);
 	ofImage img1,img2;
-	ofTrueTypeFont	verdana;
+	ofTrueTypeFont	maFonte;
+	int timeBlinkLetter;
 
 };
 

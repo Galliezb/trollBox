@@ -11,17 +11,17 @@ void menuStart::afficherMenu(){
 	if ( etatMenu == 0 ){
 		
 		// affichage du text
-		verdana.drawString( createText("Insert Coins").c_str(), 350,545);
+		maFonte.drawString( createText("Insert Coins").c_str(), 350,545);
 
 	
 	} else if ( etatMenu == 1 ){
 
-		verdana.drawString( createText("Insert MORE Coins").c_str(), 350,545);
+		maFonte.drawString( createText("Insert MORE Coins").c_str(), 350,545);
 		img1.draw(25,25);
 
 	} else if ( etatMenu == 2 ){
 
-		verdana.drawString( createText("Insert MORE MORE Coins").c_str(), 350,545);
+		maFonte.drawString( createText("Insert MORE MORE Coins").c_str(), 350,545);
 		img2.draw(25,25);
 
 	/*************************************  ENREGISTREMENT NOM  *****************************************/
@@ -34,12 +34,12 @@ void menuStart::afficherMenu(){
 
 		string descr = "Insert your name";
 
-		verdana.drawString( descr.c_str() , 150,545);
-		verdana.drawString( createName() , 250,585);
-		verdana.drawString( "_ _ _ _ _ _ _ _ _ _" , 275,585);
+		maFonte.drawString( descr.c_str() , 150,545);
+		maFonte.drawString( createName() , 300,585);
+		maFonte.drawString( "_ _ _ _ _ _ _ _ _ _" , 300,595);
 
 	} else if ( etatMenu = 4 ){
-		verdana.drawString( createName() , 350,545);
+		maFonte.drawString( createName() , 300,545);
 	}
 }
 
@@ -76,9 +76,6 @@ void menuStart::changeLetter(){
 	// MIN 97-122
 	// 32 = espace
 	// 45 = -
-
-	ofLog() << "nameNumberOfletter : " << nameNumberOfLetter;
-	ofLog() << "nameIndexCharacter : " << nameIndexCharacter;
 	
 	if ( nameNumberOfLetter == 90 ){
 		nameNumberOfLetter = 32;
@@ -90,25 +87,41 @@ void menuStart::changeLetter(){
 		nameNumberOfLetter++;
 	}
 
-	name[nameIndexCharacter] = nameNumberOfLetter;
+	name[nameIndexCharacter] = char(nameNumberOfLetter);
+
 }
 
 string menuStart::createName(){
 
+	// create string
 	string str;
 	for ( int i=0; i<20; i++){
 		str+=name[i];
 	}
 
-	return string();
+
+
+	// blink selection letter
+	if ( etatBlinkLettrer ){
+		str[nameIndexCharacter]=' ';
+	}
+
+	if ( timeBlinkLetter+450 < ofGetElapsedTimeMillis() ){
+		timeBlinkLetter = ofGetElapsedTimeMillis();
+		(etatBlinkLettrer) ? etatBlinkLettrer=false: etatBlinkLettrer=true;
+	}
+
+
+
+	return str;
 }
 
 string menuStart::createText(string str){
 	
-	if ( tps+1 < ofGetElapsedTimef() ){
+	if ( tpsBlinkPoint+1 < ofGetElapsedTimef() ){
 
 		// timer update
-		tps = ofGetElapsedTimef();
+		tpsBlinkPoint = ofGetElapsedTimef();
 		// etat des points update
 		etatPoints++;
 		if ( etatPoints > 3 ){ etatPoints = 0; }
@@ -136,14 +149,15 @@ string menuStart::createText(string str){
 
 void menuStart::init(){
 
-	verdana.load("verdana.ttf", 30, true, true);
-	verdana.setLineHeight(34.0f);
-	verdana.setLetterSpacing(1.035);
+	maFonte.load("monospacedfont_03.ttf", 30, true, true);
+	maFonte.setLineHeight(34.0f);
+	maFonte.setLetterSpacing(1.035);
 
 	img1.load("warning01.jpg");
 	img2.load("warning02.jpg");
 
-	tps = ofGetElapsedTimef();
+	tpsBlinkPoint = ofGetElapsedTimef();
+	timeBlinkLetter = ofGetElapsedTimeMillis();
 
 }
 

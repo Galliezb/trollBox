@@ -26,8 +26,5 @@ class ofApp : public ofBaseApp{
 		menuStart menuPrincipal;
 		ofSerial coSerial;
 		ofTrueTypeFont	verdana;
-		string serialSend,serialRecieve,serialtoTransmit;;
-		int byteToSend;
-		unsigned int tpsByteToSend,tpsByteRecieve;
 		
 };
