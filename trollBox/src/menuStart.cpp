@@ -45,28 +45,45 @@ void menuStart::afficherMenu(){
 
 void menuStart::changeNameLeft(){
 
+	// on recule ( en sautant l'espace blanc )
 	nameIndexCharacter-=2;
-	if ( nameIndexCharacter < 0 ){ nameIndexCharacter=0; };
 
+	// si on est tout a gauche, fail
+	if ( nameIndexCharacter < 0 ){ 
+
+		nameIndexCharacter=0;
+		SoundManagement::playSound("fail02");
+
+	}
+
+	
+	// si on est pas tout à gauche
 	if ( name[nameIndexCharacter] != ' ' ){
 		nameNumberOfLetter = name[nameIndexCharacter];
 	} else {
 		nameNumberOfLetter = 65;
 	}
-
+	
 }
 
 void menuStart::changeNameRight(){
 
+	// on avance dans les lettre du nom en sautant les espaces
 	nameIndexCharacter+=2;
-	if ( nameIndexCharacter > 18 ){ nameIndexCharacter=18; };
 
+	// si on dépasse le nombre max de caractère, on bloque
+	if ( nameIndexCharacter > 18 ){ 
+		nameIndexCharacter=18; 
+		SoundManagement::playSound("fail02");
+	}
+
+	
 	if ( name[nameIndexCharacter] != ' ' ){
 		nameNumberOfLetter = name[nameIndexCharacter];
 	} else {
 		nameNumberOfLetter = 65;
 	}
-
+	
 }
 
 void menuStart::changeLetter(){
@@ -86,6 +103,8 @@ void menuStart::changeLetter(){
 	} else {
 		nameNumberOfLetter++;
 	}
+	
+	SoundManagement::playSound("sucess01");
 
 	name[nameIndexCharacter] = char(nameNumberOfLetter);
 

@@ -178,6 +178,7 @@
   <ItemGroup>
     <ClInclude Include="src\menuStart.h" />
     <ClInclude Include="src\ofApp.h" />
+    <ClInclude Include="src\SoundManagement.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

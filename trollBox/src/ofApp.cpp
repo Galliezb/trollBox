@@ -1,3 +1,4 @@
+#pragma once
 #include "ofApp.h"
 
 //--------------------------------------------------------------
@@ -14,11 +15,15 @@ void ofApp::setup(){
 	verdana.setLineHeight(34.0f);
 	verdana.setLetterSpacing(1.035);
 
+	// init des sons
+	SoundManagement::init();
 
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+
+
 
 }
 
@@ -74,8 +79,10 @@ void ofApp::mouseDragged(int x, int y, int button){
 void ofApp::mousePressed(int x, int y, int button){
 
 	// simule la première insertion de pièce
-	menuPrincipal.etatMenu++;
-	if ( menuPrincipal.etatMenu > 3 ){ menuPrincipal.etatMenu = 0; }
+	if ( menuPrincipal.etatMenu < 3 ){
+		SoundManagement::playSound("sucess01");
+		menuPrincipal.etatMenu++;
+	}
 
 }
 
