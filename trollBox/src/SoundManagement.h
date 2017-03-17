@@ -1,12 +1,12 @@
 #pragma once
 #include "ofMain.h"
 
-namespace SoundManagement{
+class SoundManagement{
 
-	static map<string,ofSoundPlayer> soundPlayer;
-	static string soundPlayed;
-
-	void static init(){
+	map<string,ofSoundPlayer> soundPlayer;
+	string soundPlayed;
+public:
+	SoundManagement(){
 		// charge tous les sons.
 		string name[] = {"fail01",
 			"megaSucess01",
@@ -30,7 +30,7 @@ namespace SoundManagement{
 	};
 
 
-	void static playSound(string name){
+	void playSound(string name){
 
 		soundPlayed = name;
 		soundPlayer[name].play();
@@ -38,7 +38,7 @@ namespace SoundManagement{
 	};
 
 
-	void static stopSound(string name){
+	void stopSound(string name){
 
 		if ( soundPlayer[name].isPlaying() ){
 			soundPlayer[name].stop();

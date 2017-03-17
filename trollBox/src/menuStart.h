@@ -3,6 +3,7 @@
 
 class menuStart {
 public:
+	SoundManagement sm;
 	menuStart();
 
 	void afficherMenu();

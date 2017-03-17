@@ -3,6 +3,7 @@
 
 
 menuStart::menuStart(){
+	sm=SoundManagement();
 }
 
 void menuStart::afficherMenu(){
@@ -52,7 +53,7 @@ void menuStart::changeNameLeft(){
 	if ( nameIndexCharacter < 0 ){ 
 
 		nameIndexCharacter=0;
-		SoundManagement::playSound("fail02");
+		sm.playSound("fail02");
 
 	}
 
@@ -74,7 +75,7 @@ void menuStart::changeNameRight(){
 	// si on dépasse le nombre max de caractère, on bloque
 	if ( nameIndexCharacter > 18 ){ 
 		nameIndexCharacter=18; 
-		SoundManagement::playSound("fail02");
+		sm.playSound("fail02");
 	}
 
 	
@@ -104,7 +105,7 @@ void menuStart::changeLetter(){
 		nameNumberOfLetter++;
 	}
 	
-	SoundManagement::playSound("sucess01");
+	sm.playSound("sucess01");
 
 	name[nameIndexCharacter] = char(nameNumberOfLetter);
 

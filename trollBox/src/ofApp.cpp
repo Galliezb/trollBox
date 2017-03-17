@@ -16,7 +16,6 @@ void ofApp::setup(){
 	verdana.setLetterSpacing(1.035);
 
 	// init des sons
-	SoundManagement::init();
 
 }
 
@@ -80,7 +79,7 @@ void ofApp::mousePressed(int x, int y, int button){
 
 	// simule la première insertion de pièce
 	if ( menuPrincipal.etatMenu < 3 ){
-		SoundManagement::playSound("sucess01");
+		menuPrincipal.sm.playSound("sucess01");
 		menuPrincipal.etatMenu++;
 	}
 
