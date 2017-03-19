@@ -3,7 +3,6 @@
 
 
 menuStart::menuStart(){
-	sm=SoundManagement();
 }
 
 void menuStart::afficherMenu(){
@@ -27,6 +26,11 @@ void menuStart::afficherMenu(){
 
 	/*************************************  ENREGISTREMENT NOM  *****************************************/
 	} else if ( etatMenu == 3 ){
+
+
+
+	/*************************************  ENREGISTREMENT NOM  *****************************************/
+	} else if ( etatMenu == 4 ){
 	
 		// MAJ 65-90
 		// MIN 97-122
@@ -39,7 +43,7 @@ void menuStart::afficherMenu(){
 		maFonte.drawString( createName() , 300,585);
 		maFonte.drawString( "_ _ _ _ _ _ _ _ _ _" , 300,595);
 
-	} else if ( etatMenu = 4 ){
+	} else if ( etatMenu = 5 ){
 		maFonte.drawString( createName() , 300,545);
 	}
 }
@@ -53,7 +57,7 @@ void menuStart::changeNameLeft(){
 	if ( nameIndexCharacter < 0 ){ 
 
 		nameIndexCharacter=0;
-		sm.playSound("fail02");
+		myPlayer->playSound("fail02");
 
 	}
 
@@ -75,7 +79,7 @@ void menuStart::changeNameRight(){
 	// si on dépasse le nombre max de caractère, on bloque
 	if ( nameIndexCharacter > 18 ){ 
 		nameIndexCharacter=18; 
-		sm.playSound("fail02");
+		myPlayer->playSound("fail02");
 	}
 
 	
@@ -105,7 +109,7 @@ void menuStart::changeLetter(){
 		nameNumberOfLetter++;
 	}
 	
-	sm.playSound("sucess01");
+	myPlayer->playSound("clap01");
 
 	name[nameIndexCharacter] = char(nameNumberOfLetter);
 
@@ -167,8 +171,12 @@ string menuStart::createText(string str){
 }
 
 
-void menuStart::init(){
+void menuStart::init(SoundManagement* ptrMyPlayerRecieved){
 
+	// Pointeur gestionnaire de sons
+	myPlayer = ptrMyPlayerRecieved;
+
+	// créer
 	maFonte.load("monospacedfont_03.ttf", 30, true, true);
 	maFonte.setLineHeight(34.0f);
 	maFonte.setLetterSpacing(1.035);

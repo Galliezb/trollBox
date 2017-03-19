@@ -1,21 +1,24 @@
 #pragma once
 #include "ofApp.h"
 
+
 //--------------------------------------------------------------
 void ofApp::setup(){
 
 	// fond noir
 	ofBackground(ofColor(0,0,0));
 
+	// init des sons
+	myPlayer.init();
+
 	// init classe
-	menuPrincipal.init();
+	menuPrincipal.init(&myPlayer);
 
 	// police d'affichage
 	verdana.load("verdana.ttf", 30, true, true);
 	verdana.setLineHeight(34.0f);
 	verdana.setLetterSpacing(1.035);
 
-	// init des sons
 
 }
 
@@ -79,7 +82,7 @@ void ofApp::mousePressed(int x, int y, int button){
 
 	// simule la première insertion de pièce
 	if ( menuPrincipal.etatMenu < 3 ){
-		menuPrincipal.sm.playSound("sucess01");
+		myPlayer.playSound("sucess01");
 		menuPrincipal.etatMenu++;
 	}
 

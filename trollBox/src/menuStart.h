@@ -3,7 +3,6 @@
 
 class menuStart {
 public:
-	SoundManagement sm;
 	menuStart();
 
 	void afficherMenu();
@@ -12,7 +11,7 @@ public:
 	void changeLetter();
 	string createName();
 	string createText(string str);
-	void init();
+	void init(SoundManagement* ptrMyPlayerRecieved);
 
 	~menuStart();
 
@@ -29,6 +28,7 @@ public:
 
 private:
 	
+	SoundManagement* myPlayer;
 	bool etatPiece = false, etatBlinkLettrer = false;
 	int etatPoints=0;
 	float tpsBlinkPoint;

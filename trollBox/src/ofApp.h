@@ -26,5 +26,6 @@ class ofApp : public ofBaseApp{
 		menuStart menuPrincipal;
 		ofSerial coSerial;
 		ofTrueTypeFont	verdana;
+		SoundManagement myPlayer;
 		
 };

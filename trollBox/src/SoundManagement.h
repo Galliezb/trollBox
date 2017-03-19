@@ -6,7 +6,7 @@ class SoundManagement{
 	map<string,ofSoundPlayer> soundPlayer;
 	string soundPlayed;
 public:
-	SoundManagement(){
+	void init(){
 		// charge tous les sons.
 		string name[] = {"fail01",
 			"megaSucess01",
@@ -22,8 +22,10 @@ public:
 
 		for each (string str in name){
 
+			// charge le son temporairement
 			ofSoundPlayer tmp;
 			tmp.loadSound("sound\\" + str + ".mp3");
+			// crée une copie dans la map pour l'utiliser plus tard au besoin.
 			soundPlayer[str] = tmp;
 		}
 
@@ -38,10 +40,10 @@ public:
 	};
 
 
-	void stopSound(string name){
+	void stopSound(){
 
-		if ( soundPlayer[name].isPlaying() ){
-			soundPlayer[name].stop();
+		if ( soundPlayer[soundPlayed].isPlaying() ){
+			soundPlayer[soundPlayed].stop();
 		}
 
 	};
