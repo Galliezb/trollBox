@@ -171,11 +171,14 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\choixMenu.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\menuStart.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
+    <ClCompile Include="src\soundManagement.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\choixMenu.h" />
     <ClInclude Include="src\menuStart.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\SoundManagement.h" />

@@ -16,6 +16,10 @@
     <ClCompile Include="src\menuStart.cpp">
       <Filter>src\classes</Filter>
     </ClCompile>
+    <ClCompile Include="src\choixMenu.cpp" />
+    <ClCompile Include="src\soundManagement.cpp">
+      <Filter>src\classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -23,9 +27,6 @@
     </Filter>
     <Filter Include="src\classes">
       <UniqueIdentifier>{fe443d90-ef8f-49e1-8738-975ee378dc39}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\namespace">
-      <UniqueIdentifier>{272c4772-7d77-4398-8b88-f6f5a489d37d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -38,8 +39,9 @@
     <ClInclude Include="src\menuStart.h">
       <Filter>src\classes</Filter>
     </ClInclude>
+    <ClInclude Include="src\choixMenu.h" />
     <ClInclude Include="src\SoundManagement.h">
-      <Filter>src\namespace</Filter>
+      <Filter>src\classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -51,16 +51,50 @@ void ofApp::keyReleased(int key){
 
 		// Decale a gauche
 		if ( key == OF_KEY_LEFT ){
-			menuPrincipal.changeNameLeft();
+			menuPrincipal.changeNameRight();
 		// decale a droite
 		} else if ( key == OF_KEY_DOWN ){
-			menuPrincipal.changeNameRight();
+			menuPrincipal.changeLetter(false);
 		// changer la lettre ( ++ )
 		} else if ( key == OF_KEY_UP ){
-			menuPrincipal.changeLetter();
+			menuPrincipal.changeLetter(true);
 		// valide le nom
 		} else if ( key == OF_KEY_RIGHT ){
 			menuPrincipal.etatMenu = 4;
+		}
+
+	/****************************** LOADING BAR *********************************************/
+	}  else if ( menuPrincipal.etatMenu == 5 ){
+
+		bool a=false,b=false,c=false,d=false;
+
+		// bouton 1
+		if ( key == OF_KEY_LEFT ){
+			a=true;
+		// bouton 2
+		} else if ( key == OF_KEY_DOWN ){
+			b=true;
+		// bouton 3
+		} else if ( key == OF_KEY_UP ){
+			c=true;
+		// bouton 4
+		} else if ( key == OF_KEY_RIGHT ){
+			d=true;
+		}
+
+		menuPrincipal.newModificateur(a,b,c,d);
+	/****************************** CHOIX MENU *********************************************/
+	} else if ( menuPrincipal.etatMenu == 6 ){
+
+		// Decale a gauche
+		if ( key == OF_KEY_LEFT ){
+			menuPrincipal.changeChoixMenu(false);
+			// decale a droite
+		} else if ( key == OF_KEY_DOWN ){
+			menuPrincipal.changeChoixMenu(true);
+			// changer la lettre ( ++ )
+		} else if ( key == OF_KEY_UP || key == OF_KEY_RIGHT ){
+			menuPrincipal.valideChoixMenu();
 		}
 
 	}
