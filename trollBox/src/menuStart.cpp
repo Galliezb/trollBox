@@ -335,6 +335,7 @@ void menuStart::changeChoixMenu( bool down ){
 		etatMenuChoix--;
 		if (etatMenuChoix < 0){ etatMenuChoix = 3;}
 	}
+	myPlayer->playSound("clap01");
 
 }
 
