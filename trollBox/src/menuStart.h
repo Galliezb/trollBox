@@ -26,7 +26,7 @@ public:
 	2 => INSERT MORE MORE COINS
 	3 => SUCCES ! START OF TROLLBOX !
 	*/
-	int etatMenu = 5;
+	int etatMenu = 8;
 	bool endWriteUserName = false;
 	int nameIndexCharacter=0,nameNumberOfLetter=65;
 
@@ -51,6 +51,10 @@ private:
 
 	// CHOIX MENU
 	int etatMenuChoix = -1;
+
+	// Administration
+	ofImage gyrophare;
+	int timeImageGyrophare=1,posXGyrophare=0;
 
 	// method private
 	string invertName();

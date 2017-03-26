@@ -4,6 +4,7 @@
 void SoundManagement::init(){
 	// charge tous les sons.
 	string name[] = {
+		"alarm01",
 		"clap01",
 		"fail01","fail02",
 		"megaSucess01",

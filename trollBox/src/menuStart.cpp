@@ -108,12 +108,12 @@ void menuStart::afficherMenu(){
 			posXbarreChargement+=avancement;
 
 			if (posXbarreChargement < -1280 ){ posXbarreChargement = -1280; } 
-			if (posXbarreChargement > 1280 ){ posXbarreChargement = 1280; } 
+			if (posXbarreChargement > 1280 ){ etatMenu = 6; } 
 
 		}
 
 		/*************************************  MENU JEU  *****************************************/
-	} else if ( etatMenu = 6 ){
+	} else if ( etatMenu == 6 ){
 
 		if ( etatMenuChoix == 0 ){
 			menu.drawSubsection(422,30,435,92,0,92,435,92);
@@ -144,13 +144,23 @@ void menuStart::afficherMenu(){
 		maFonte.drawString( "Credits",572,480);
 		
 	/************************************* MENU CHOIX DES JEUX  *****************************************/
-	} else if ( etatMenu = 7 ){
+	} else if ( etatMenu == 7 ){
 
 	/************************************* ADMINISTRATION ( troll )  *****************************************/
-	} else if ( etatMenu = 8 ){
+	} else if ( etatMenu == 8 ){
+
+		gyrophare.drawSubsection(0,0,100,95,posXGyrophare*100,0,100,95);
+
+		if ( timeImageGyrophare+1000 < ofGetElapsedTimeMillis() ){
+			posXGyrophare++;
+			if ( posXGyrophare > 1 ){ posXGyrophare = 0; }
+		}
+
+		myPlayer->playSound("alarm01",true);
+
 
 	/************************************* CREDITS  *****************************************/
-	} else if ( etatMenu = 9 ){
+	} else if ( etatMenu == 9 ){
 
 	}
 }
@@ -290,6 +300,7 @@ void menuStart::init(SoundManagement* ptrMyPlayerRecieved){
 	barreOut.load("barre_out.png");
 	trollDance.load("trollDance.jpg");
 	menu.load("menu01.png");
+	gyrophare.load("gyrophare.png");
 
 	tpsBlinkPoint = ofGetElapsedTimef();
 	timeBlinkLetter = ofGetElapsedTimeMillis();
