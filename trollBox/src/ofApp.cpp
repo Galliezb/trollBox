@@ -12,20 +12,12 @@ void ofApp::setup(){
 	myPlayer.init();
 
 	// init classe
-	menuPrincipal.init(&myPlayer);
-
-	// police d'affichage
-	verdana.load("verdana.ttf", 30, true, true);
-	verdana.setLineHeight(34.0f);
-	verdana.setLetterSpacing(1.035);
-
+	menuPrincipal.init(&myPlayer,&maFonte);
 
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
-
 
 }
 
@@ -97,8 +89,57 @@ void ofApp::keyReleased(int key){
 			menuPrincipal.valideChoixMenu();
 		}
 
-	}
+	/****************************** PASSWORD ADMINISTRATION *********************************************/
+	} else if ( menuPrincipal.etatMenu == 8 ){
 
+		ofLog() << "OK";
+
+		// bouton 1
+		if ( key == OF_KEY_LEFT ){
+			menuPrincipal.sequenceHistory[menuPrincipal.indexSequence] = 1;
+			// bouton 2
+		} else if ( key == OF_KEY_DOWN ){
+			menuPrincipal.sequenceHistory[menuPrincipal.indexSequence] = 2;
+			// bouton 3
+		} else if ( key == OF_KEY_UP ){
+			menuPrincipal.sequenceHistory[menuPrincipal.indexSequence] = 3;
+			// bouton 4
+		} else if ( key == OF_KEY_RIGHT ){
+			menuPrincipal.sequenceHistory[menuPrincipal.indexSequence] = 4;
+		}
+		menuPrincipal.indexSequence--;
+		if ( menuPrincipal.indexSequence < 0 ){ menuPrincipal.indexSequence = 7; }
+
+	/****************************** ADMINISTRATION *********************************************/
+	} else if ( menuPrincipal.etatMenu == 10 ){
+
+		// bouton 1
+		if ( key == OF_KEY_LEFT ){
+			if ( myPlayer.soundVolume < 0.04f ){
+				myPlayer.playSound("fail01",true);
+			} else {
+				myPlayer.soundVolume-=0.05f;
+			}
+			// bouton 2
+		} else if ( key == OF_KEY_DOWN ){
+			menuPrincipal.optionSelectionAdminsitration--;
+			if ( menuPrincipal.optionSelectionAdminsitration < 0 ){ menuPrincipal.optionSelectionAdminsitration = 0 ;}
+			// bouton 3
+		} else if ( key == OF_KEY_UP ){
+			menuPrincipal.optionSelectionAdminsitration++;
+			if ( menuPrincipal.optionSelectionAdminsitration > 0 ){ menuPrincipal.optionSelectionAdminsitration = 0 ;}
+			// bouton 4
+		} else if ( key == OF_KEY_RIGHT ){
+			if ( myPlayer.soundVolume > 0.96f ){
+				myPlayer.playSound("fail01",true);
+			} else {
+				myPlayer.soundVolume+=0.05f;
+			}
+
+		}
+		
+
+	}
 }
 
 //--------------------------------------------------------------
