@@ -29,6 +29,8 @@ void SoundManagement::init(){
 
 void SoundManagement::playSound(string name, bool verifIfSoundIsPlaying){
 
+	soundPlayer[name].setVolume(soundVolume);
+
 	// si on demande à vérifier la lecture en cours
 	if ( verifIfSoundIsPlaying ){
 		// lance uniquement si le son n'est pas en cours

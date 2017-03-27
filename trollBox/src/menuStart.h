@@ -10,7 +10,7 @@ public:
 	void changeLetter( bool positif=true );
 	string createName();
 	string createText(string str);
-	void init(SoundManagement* ptrMyPlayerRecieved);
+	void init(SoundManagement* ptrMyPlayerRecieved, ofTrueTypeFont* maFonte);
 	void newModificateur(bool bt1,bool bt2,bool bt3,bool bt4);
 
 	// choi menu
@@ -26,13 +26,19 @@ public:
 	2 => INSERT MORE MORE COINS
 	3 => SUCCES ! START OF TROLLBOX !
 	*/
-	int etatMenu = 8;
+	int etatMenu = 7;
 	bool endWriteUserName = false;
 	int nameIndexCharacter=0,nameNumberOfLetter=65;
+
+	// administration
+	int indexSequence=7,sequenceHistory[8]={0,0,0,0,0,0,0,0},optionSelectionAdminsitration=0;
+	// choix menu jeu
+	int etatMenuJeu=0;
 
 private:
 	
 	SoundManagement* myPlayer;
+	ofTrueTypeFont* ptrMaFonte;
 	bool etatPiece = false, etatBlinkLettrer = false;
 	int etatPoints=0,posXbarreChargement=-1280;
 	float tpsBlinkPoint;
@@ -40,7 +46,7 @@ private:
 	char name[20] = {'A',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
 	float tpsLettre = ofRandom( 0.4f, 2.0f);
 	ofImage img1,img2,troll01,barreIn,barreOut,trollDance,menu;
-	ofTrueTypeFont	maFonte;
+	
 	// les différents timers
 	int timeBlinkLetter,timeWaitLeavingWelcome,timeLoadBarFPS;
 	//timer animation + index
@@ -54,7 +60,10 @@ private:
 
 	// Administration
 	ofImage gyrophare;
-	int timeImageGyrophare=1,posXGyrophare=0;
+	int timeBeforeAutoLeaveAdministration,timeImageGyrophare=1,posXGyrophare=0;
+	float lastVolume=1.0f;
+
+
 
 	// method private
 	string invertName();

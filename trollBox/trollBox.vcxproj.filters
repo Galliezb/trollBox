@@ -20,6 +20,7 @@
     <ClCompile Include="src\soundManagement.cpp">
       <Filter>src\classes</Filter>
     </ClCompile>
+    <ClCompile Include="src\game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -43,6 +44,7 @@
     <ClInclude Include="src\SoundManagement.h">
       <Filter>src\classes</Filter>
     </ClInclude>
+    <ClInclude Include="src\game.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

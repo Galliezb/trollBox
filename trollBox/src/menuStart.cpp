@@ -11,17 +11,17 @@ void menuStart::afficherMenu(){
 	if ( etatMenu == 0 ){
 		
 		// affichage du text
-		maFonte.drawString( createText("Insert Coins").c_str(), 350,545);
+		ptrMaFonte->drawString( createText("Insert Coins").c_str(), 350,545);
 
 	
 	} else if ( etatMenu == 1 ){
 
-		maFonte.drawString( createText("Insert MORE Coins").c_str(), 350,545);
+		ptrMaFonte->drawString( createText("Insert MORE Coins").c_str(), 350,545);
 		img1.draw(25,25);
 
 	} else if ( etatMenu == 2 ){
 
-		maFonte.drawString( createText("Insert MORE MORE Coins").c_str(), 350,545);
+		ptrMaFonte->drawString( createText("Insert MORE MORE Coins").c_str(), 350,545);
 		img2.draw(25,25);
 
 	/*************************************  ENREGISTREMENT NOM  *****************************************/
@@ -34,20 +34,20 @@ void menuStart::afficherMenu(){
 
 		string descr = "Insert your name";
 
-		maFonte.drawString( descr.c_str() , 150,545);
-		maFonte.drawString( createName() , 300,585);
+		ptrMaFonte->drawString( descr.c_str() , 150,545);
+		ptrMaFonte->drawString( createName() , 300,585);
 
 		// pourquoi les lettres le décale bordel ?
-		//maFonte.drawString( "_ _ _ _ _ _ _ _ _ _" , 300,595);
+		//ptrMaFonte->drawString( "_ _ _ _ _ _ _ _ _ _" , 300,595);
 
 	/*************************************  WELCOME TROLLBOX + NOM  *****************************************/
 	} else if ( etatMenu == 4 ){
 	
 		// Affiche bienvenu
 		troll01.draw(0,104,575,616);
-		maFonte.drawString(" WELCOME TO THE TROLLBOX",600,150);
+		ptrMaFonte->drawString(" WELCOME TO THE TROLLBOX",600,150);
 		// troll en inversant le nom
-		maFonte.drawString( invertName() , 600,250);
+		ptrMaFonte->drawString( invertName() , 600,250);
 		// sauvegarde le nom
 		nameSaved = invertName();
 
@@ -71,21 +71,21 @@ void menuStart::afficherMenu(){
 		barreOut.draw(0,327);
 
 		// txt
-		maFonte.drawString("Loading... Do not wait please...",375,300);
-		maFonte.drawString(strTimeLoadBar,450,350);
+		ptrMaFonte->drawString("Loading... Do not wait please...",375,300);
+		ptrMaFonte->drawString(strTimeLoadBar,450,350);
 
 		string str = "Loading State : ";
 		str += to_string(posXbarreChargement+1280);
 		str += " / 2560 ";
-		maFonte.drawString(str,375,425);
+		ptrMaFonte->drawString(str,375,425);
 
 		str = "Loading speed : ";
 		str += to_string(avancement);
-		maFonte.drawString(str,375,475);
+		ptrMaFonte->drawString(str,375,475);
 
 		str = "Next Loading speed : ";
 		str += to_string(avancement + modificateur);
-		maFonte.drawString(str,375,525);
+		ptrMaFonte->drawString(str,375,525);
 
 		if ( timerTrollDance+50 < ofGetElapsedTimeMillis() ){
 			decoupeTrollDance++;
@@ -120,47 +120,123 @@ void menuStart::afficherMenu(){
 		} else {
 			menu.drawSubsection(422,30,435,92,0,0,435,92);
 		}
-		maFonte.drawString( "All games",572,90);
+		ptrMaFonte->drawString( "All games",572,90);
 		
 		if ( etatMenuChoix == 1 ){
 			menu.drawSubsection(422,160,435,92,0,92,435,92);
 		} else {
 			menu.drawSubsection(422,160,435,92,0,0,435,92);
 		}
-		maFonte.drawString( "Do not try",572,220);
+		ptrMaFonte->drawString( "Do not try",572,220);
 		
 		if ( etatMenuChoix == 2 ){
 			menu.drawSubsection(422,290,435,92,0,92,435,92);
 		} else {
 			menu.drawSubsection(422,290,435,92,0,0,435,92);
 		}
-		maFonte.drawString( "Administration",572,350);
+		ptrMaFonte->drawString( "Administration",572,350);
 		
 		if ( etatMenuChoix == 3 ){
 			menu.drawSubsection(422,420,435,92,0,92,435,92);
 		} else {
 			menu.drawSubsection(422,420,435,92,0,0,435,92);
 		}
-		maFonte.drawString( "Credits",572,480);
+		ptrMaFonte->drawString( "Credits",572,480);
 		
 	/************************************* MENU CHOIX DES JEUX  *****************************************/
 	} else if ( etatMenu == 7 ){
+
+		if ( etatMenuJeu == 0 ){
+			menu.drawSubsection(422,30,435,92,0,92,435,92);
+		} else {
+			menu.drawSubsection(422,30,435,92,0,0,435,92);
+		}
+		ptrMaFonte->drawString( "Bourrinage",572,90);
+
+		if ( etatMenuJeu == 1 ){
+			menu.drawSubsection(422,160,435,92,0,92,435,92);
+		} else {
+			menu.drawSubsection(422,160,435,92,0,0,435,92);
+		}
+		ptrMaFonte->drawString( "Sprint",572,220);
+
+		if ( etatMenuJeu == 2 ){
+			menu.drawSubsection(422,290,435,92,0,92,435,92);
+		} else {
+			menu.drawSubsection(422,290,435,92,0,0,435,92);
+		}
+		ptrMaFonte->drawString( "Choute",572,350);
+
+		if ( etatMenuJeu == 3 ){
+			menu.drawSubsection(422,420,435,92,0,92,435,92);
+		} else {
+			menu.drawSubsection(422,420,435,92,0,0,435,92);
+		}
+		ptrMaFonte->drawString( "Sagesse",572,480);
 
 	/************************************* ADMINISTRATION ( troll )  *****************************************/
 	} else if ( etatMenu == 8 ){
 
 		gyrophare.drawSubsection(0,0,100,95,posXGyrophare*100,0,100,95);
+		gyrophare.drawSubsection(1180,0,100,95,posXGyrophare*100,0,100,95);
 
-		if ( timeImageGyrophare+1000 < ofGetElapsedTimeMillis() ){
+		if ( timeImageGyrophare+500 < ofGetElapsedTimeMillis() ){
 			posXGyrophare++;
 			if ( posXGyrophare > 1 ){ posXGyrophare = 0; }
+			timeImageGyrophare = ofGetElapsedTimeMillis();
 		}
-
+		// alarm avec volume à fond.
+		lastVolume = myPlayer->soundVolume;
+		myPlayer->soundVolume = 1.0f;
 		myPlayer->playSound("alarm01",true);
+		myPlayer->soundVolume = lastVolume;
+
+		// Affiche l'image avec le compteur
+		ofSetColor(255,0,0);
+		ptrMaFonte->drawString(to_string(indexSequence),500,500);
+		ofSetColor(255,255,255);
+
+
+		if ( sequenceHistory[7] == 1 &&
+			sequenceHistory[6] == 2 &&
+			sequenceHistory[5] == 4 &&
+			sequenceHistory[4] == 2 &&
+			sequenceHistory[3] == 1 &&
+			sequenceHistory[2] == 2 &&
+			sequenceHistory[1] == 4 &&
+			sequenceHistory[0] == 2 ){
+				
+				// pwd ok, on passe en mode config
+				etatMenu = 10;
+				myPlayer->stopSound();
+
+			}
+		
+		// leave auto administration
+		if ( indexSequence == 0 ){
+			etatMenu = 5;
+		}
+		
 
 
 	/************************************* CREDITS  *****************************************/
 	} else if ( etatMenu == 9 ){
+
+	/************************************* ADMINISTRATION  *****************************************/
+	} else if ( etatMenu == 10 ){
+
+
+		// Volume
+		if ( optionSelectionAdminsitration == 0 ){ ofSetColor(255, 0, 0);}
+		ptrMaFonte->drawString("Volume : ",50,50);
+		if ( optionSelectionAdminsitration == 0 ){ ofSetColor(255, 255, 255);}
+
+		ofNoFill();
+		ofDrawRectRounded(199,22,502,32,5);
+		ofSetColor(0, 255, 0);
+		ofFill();
+		ofDrawRectRounded(200,23,500*myPlayer->soundVolume,30,5);
+		ofSetColor(255,255,255);
 
 	}
 }
@@ -283,15 +359,16 @@ string menuStart::createText(string str){
 }
 
 
-void menuStart::init(SoundManagement* ptrMyPlayerRecieved){
+void menuStart::init(SoundManagement* ptrMyPlayerRecieved, ofTrueTypeFont* maFonte){
 
 	// Pointeur gestionnaire de sons
 	myPlayer = ptrMyPlayerRecieved;
+	ptrMaFonte = maFonte;
 
 	// créer
-	maFonte.load("monospacedfont_03.ttf", 30);
-	//maFonte.setLineHeight(34.0f);
-	//maFonte.setLetterSpacing(1.035);
+	ptrMaFonte->load("monospacedfont_03.ttf", 30);
+	//ptrMaFonte->setLineHeight(34.0f);
+	//ptrMaFonte->setLetterSpacing(1.035);
 
 	img1.load("warning01.jpg");
 	img2.load("warning02.jpg");
@@ -365,6 +442,7 @@ void menuStart::valideChoixMenu(){
 		// choix administration
 		} else if ( etatMenuChoix == 2 ){
 			etatMenu = 8;
+			timeBeforeAutoLeaveAdministration = ofGetElapsedTimeMillis();
 		// choix Credits
 		} else if ( etatMenuChoix == 3 ){
 			etatMenu = 9;

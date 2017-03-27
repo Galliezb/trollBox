@@ -8,8 +8,9 @@ class SoundManagement{
 public:
 	void init();
 	void playSound(string name, bool verifIfSoundIsPlaying=false);
-
-
 	void stopSound();
+
+	// variables
+	float soundVolume=1.0f;
 };
 
