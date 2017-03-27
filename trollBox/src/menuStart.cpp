@@ -146,6 +146,10 @@ void menuStart::afficherMenu(){
 	/************************************* MENU CHOIX DES JEUX  *****************************************/
 	} else if ( etatMenu == 7 ){
 
+		// On remplace par un jeu aleatoire
+
+
+		/*
 		if ( etatMenuJeu == 0 ){
 			menu.drawSubsection(422,30,435,92,0,92,435,92);
 		} else {
@@ -173,6 +177,7 @@ void menuStart::afficherMenu(){
 			menu.drawSubsection(422,420,435,92,0,0,435,92);
 		}
 		ptrMaFonte->drawString( "Sagesse",572,480);
+		*/
 
 	/************************************* ADMINISTRATION ( troll )  *****************************************/
 	} else if ( etatMenu == 8 ){
