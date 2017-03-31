@@ -147,37 +147,9 @@ void menuStart::afficherMenu(){
 	} else if ( etatMenu == 7 ){
 
 		// On remplace par un jeu aleatoire
-
-
-		/*
-		if ( etatMenuJeu == 0 ){
-			menu.drawSubsection(422,30,435,92,0,92,435,92);
-		} else {
-			menu.drawSubsection(422,30,435,92,0,0,435,92);
+		if ( ptrMesJeux->choixGame == -1 ){
+			ptrMesJeux->choixGame = (int) round( ofRandom(0.f,0.f) );
 		}
-		ptrMaFonte->drawString( "Bourrinage",572,90);
-
-		if ( etatMenuJeu == 1 ){
-			menu.drawSubsection(422,160,435,92,0,92,435,92);
-		} else {
-			menu.drawSubsection(422,160,435,92,0,0,435,92);
-		}
-		ptrMaFonte->drawString( "Sprint",572,220);
-
-		if ( etatMenuJeu == 2 ){
-			menu.drawSubsection(422,290,435,92,0,92,435,92);
-		} else {
-			menu.drawSubsection(422,290,435,92,0,0,435,92);
-		}
-		ptrMaFonte->drawString( "Choute",572,350);
-
-		if ( etatMenuJeu == 3 ){
-			menu.drawSubsection(422,420,435,92,0,92,435,92);
-		} else {
-			menu.drawSubsection(422,420,435,92,0,0,435,92);
-		}
-		ptrMaFonte->drawString( "Sagesse",572,480);
-		*/
 
 	/************************************* ADMINISTRATION ( troll )  *****************************************/
 	} else if ( etatMenu == 8 ){
@@ -201,27 +173,37 @@ void menuStart::afficherMenu(){
 		ptrMaFonte->drawString(to_string(indexSequence),500,500);
 		ofSetColor(255,255,255);
 
+		ptrMaFonte->drawString(to_string(sequenceHistory[7])
+							   +to_string(sequenceHistory[6])
+							   +to_string(sequenceHistory[5])
+							   +to_string(sequenceHistory[4])
+							   +to_string(sequenceHistory[3])
+							   +to_string(sequenceHistory[2])
+							   +to_string(sequenceHistory[1])
+							   +to_string(sequenceHistory[0])
+							   ,500,550);
+		ptrMaFonte->drawString( "index : " + to_string(indexSequence),500,600);
 
-		if ( sequenceHistory[7] == 1 &&
-			sequenceHistory[6] == 2 &&
-			sequenceHistory[5] == 4 &&
-			sequenceHistory[4] == 2 &&
-			sequenceHistory[3] == 1 &&
-			sequenceHistory[2] == 2 &&
-			sequenceHistory[1] == 4 &&
-			sequenceHistory[0] == 2 ){
+		if ( indexSequence < 0 ){
+
+			if ( sequenceHistory[7] == 1 &&
+				sequenceHistory[6] == 2 &&
+				sequenceHistory[5] == 4 &&
+				sequenceHistory[4] == 2 &&
+				sequenceHistory[3] == 1 &&
+				sequenceHistory[2] == 2 &&
+				sequenceHistory[1] == 4 &&
+				sequenceHistory[0] == 2 ){
 				
-				// pwd ok, on passe en mode config
-				etatMenu = 10;
-				myPlayer->stopSound();
+					// pwd ok, on passe en mode config
+					etatMenu = 10;
+					myPlayer->stopSound();
 
+			} else {
+				etatMenu = 5;
 			}
-		
-		// leave auto administration
-		if ( indexSequence == 0 ){
-			etatMenu = 5;
+
 		}
-		
 
 
 	/************************************* CREDITS  *****************************************/
@@ -364,11 +346,12 @@ string menuStart::createText(string str){
 }
 
 
-void menuStart::init(SoundManagement* ptrMyPlayerRecieved, ofTrueTypeFont* maFonte){
+void menuStart::init(SoundManagement* ptrMyPlayerRecieved, ofTrueTypeFont* maFonte, game* instanceDesJeux){
 
 	// Pointeur gestionnaire de sons
 	myPlayer = ptrMyPlayerRecieved;
 	ptrMaFonte = maFonte;
+	ptrMesJeux = instanceDesJeux;
 
 	// créer
 	ptrMaFonte->load("monospacedfont_03.ttf", 30);

@@ -12,19 +12,30 @@ void ofApp::setup(){
 	myPlayer.init();
 
 	// init classe
-	menuPrincipal.init(&myPlayer,&maFonte);
+	mesJeux.init();
+	menuPrincipal.init(&myPlayer,&maFonte,&mesJeux);
+
 
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 
+	if ( mesJeux.choixGame != -1 ){
+		mesJeux.calculTout();
+	}
+
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
 
-	menuPrincipal.afficherMenu();
+
+	if ( mesJeux.choixGame == -1 ){
+		menuPrincipal.afficherMenu();
+	} else {
+		mesJeux.displayGame();
+	}
 
 
 
@@ -91,9 +102,6 @@ void ofApp::keyReleased(int key){
 
 	/****************************** PASSWORD ADMINISTRATION *********************************************/
 	} else if ( menuPrincipal.etatMenu == 8 ){
-
-		ofLog() << "OK";
-
 		// bouton 1
 		if ( key == OF_KEY_LEFT ){
 			menuPrincipal.sequenceHistory[menuPrincipal.indexSequence] = 1;
@@ -108,7 +116,6 @@ void ofApp::keyReleased(int key){
 			menuPrincipal.sequenceHistory[menuPrincipal.indexSequence] = 4;
 		}
 		menuPrincipal.indexSequence--;
-		if ( menuPrincipal.indexSequence < 0 ){ menuPrincipal.indexSequence = 7; }
 
 	/****************************** ADMINISTRATION *********************************************/
 	} else if ( menuPrincipal.etatMenu == 10 ){

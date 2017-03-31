@@ -1,5 +1,6 @@
 #pragma once
 #include "SoundManagement.h"
+#include "game.h"
 
 class menuStart {
 public:
@@ -10,7 +11,7 @@ public:
 	void changeLetter( bool positif=true );
 	string createName();
 	string createText(string str);
-	void init(SoundManagement* ptrMyPlayerRecieved, ofTrueTypeFont* maFonte);
+	void init(SoundManagement* ptrMyPlayerRecieved, ofTrueTypeFont* maFonte, game* instanceDesJeux);
 	void newModificateur(bool bt1,bool bt2,bool bt3,bool bt4);
 
 	// choi menu
@@ -26,12 +27,12 @@ public:
 	2 => INSERT MORE MORE COINS
 	3 => SUCCES ! START OF TROLLBOX !
 	*/
-	int etatMenu = 7;
+	int etatMenu = 8;
 	bool endWriteUserName = false;
 	int nameIndexCharacter=0,nameNumberOfLetter=65;
 
 	// administration
-	int indexSequence=7,sequenceHistory[8]={0,0,0,0,0,0,0,0},optionSelectionAdminsitration=0;
+	int indexSequence=7,sequenceHistory[8],optionSelectionAdminsitration=0;
 	// choix menu jeu
 	int etatMenuJeu=0;
 
@@ -39,6 +40,7 @@ private:
 	
 	SoundManagement* myPlayer;
 	ofTrueTypeFont* ptrMaFonte;
+	game* ptrMesJeux;
 	bool etatPiece = false, etatBlinkLettrer = false;
 	int etatPoints=0,posXbarreChargement=-1280;
 	float tpsBlinkPoint;

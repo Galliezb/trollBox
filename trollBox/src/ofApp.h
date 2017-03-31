@@ -1,6 +1,7 @@
 #pragma once
 #include "SoundManagement.h"
 #include "menuStart.h"
+#include "game.h"
 
 
 
@@ -27,5 +28,6 @@ class ofApp : public ofBaseApp{
 		ofSerial coSerial;
 		ofTrueTypeFont	maFonte;
 		SoundManagement myPlayer;
+		game mesJeux;
 		
 };

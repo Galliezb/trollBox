@@ -6,13 +6,19 @@ public:
 	game(){};
 	~game(){};
 
-	// G1
-	void displayTuto(string txt1,string txt2,string txt3,string txt4);
+	void calculTout();
+	void displayGame();
+	void init();
 
-
-	int etatGame=-1;
+	int choixGame=-1;
 
 private:
+
+	// methode interne private
+	// G1
+	void displayTutoGame01();
+	void displayGame01();
+
 	// all game
 	int gallTimeDisplayInfo=-1;
 
