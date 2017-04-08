@@ -12,7 +12,7 @@ void ofApp::setup(){
 	myPlayer.init();
 
 	// init classe
-	mesJeux.init();
+	mesJeux.init(&myPlayer,&maFonte);
 	menuPrincipal.init(&myPlayer,&maFonte,&mesJeux);
 
 
@@ -20,11 +20,6 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
-	if ( mesJeux.choixGame != -1 ){
-		mesJeux.calculTout();
-	}
-
 }
 
 //--------------------------------------------------------------
@@ -34,7 +29,7 @@ void ofApp::draw(){
 	if ( mesJeux.choixGame == -1 ){
 		menuPrincipal.afficherMenu();
 	} else {
-		mesJeux.displayGame();
+		mesJeux.displaytutoriel();
 	}
 
 
@@ -134,7 +129,7 @@ void ofApp::keyReleased(int key){
 			// bouton 3
 		} else if ( key == OF_KEY_UP ){
 			menuPrincipal.optionSelectionAdminsitration++;
-			if ( menuPrincipal.optionSelectionAdminsitration > 0 ){ menuPrincipal.optionSelectionAdminsitration = 0 ;}
+			menuPrincipal.etatMenu=0;
 			// bouton 4
 		} else if ( key == OF_KEY_RIGHT ){
 			if ( myPlayer.soundVolume > 0.96f ){

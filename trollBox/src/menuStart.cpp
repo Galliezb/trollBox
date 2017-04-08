@@ -108,7 +108,20 @@ void menuStart::afficherMenu(){
 			posXbarreChargement+=avancement;
 
 			if (posXbarreChargement < -1280 ){ posXbarreChargement = -1280; } 
-			if (posXbarreChargement > 1280 ){ etatMenu = 6; } 
+
+			// Fin chargement
+			if (posXbarreChargement > 1280 ){ 
+
+				// coupe le son + reinit au cas ou on relance la barre ( do not try )
+				myPlayer->stopSound();
+				posXbarreChargement=-1280;
+				avancement=1;
+				modificateur=0; 
+
+				etatMenu = 6;
+			
+			
+			} 
 
 		}
 
@@ -148,7 +161,7 @@ void menuStart::afficherMenu(){
 
 		// On remplace par un jeu aleatoire
 		if ( ptrMesJeux->choixGame == -1 ){
-			ptrMesJeux->choixGame = (int) round( ofRandom(0.f,0.f) );
+			ptrMesJeux->choixGame = ptrMesJeux->selectGame();
 		}
 
 	/************************************* ADMINISTRATION ( troll )  *****************************************/
@@ -186,6 +199,10 @@ void menuStart::afficherMenu(){
 
 		if ( indexSequence < 0 ){
 
+			// on reinit le tout
+			myPlayer->stopSound();
+			indexSequence = 7;
+
 			if ( sequenceHistory[7] == 1 &&
 				sequenceHistory[6] == 2 &&
 				sequenceHistory[5] == 4 &&
@@ -194,10 +211,10 @@ void menuStart::afficherMenu(){
 				sequenceHistory[2] == 2 &&
 				sequenceHistory[1] == 4 &&
 				sequenceHistory[0] == 2 ){
-				
+
 					// pwd ok, on passe en mode config
 					etatMenu = 10;
-					myPlayer->stopSound();
+					
 
 			} else {
 				etatMenu = 5;

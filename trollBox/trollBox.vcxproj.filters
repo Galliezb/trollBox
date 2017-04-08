@@ -22,9 +22,6 @@
     <ClCompile Include="src\game.cpp">
       <Filter>src\classes</Filter>
     </ClCompile>
-    <ClCompile Include="src\choixMenu.cpp">
-      <Filter>src\classes</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -48,9 +45,6 @@
       <Filter>src\classes</Filter>
     </ClInclude>
     <ClInclude Include="src\game.h">
-      <Filter>src\classes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\choixMenu.h">
       <Filter>src\classes</Filter>
     </ClInclude>
   </ItemGroup>
