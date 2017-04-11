@@ -20,6 +20,14 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
+
+	// si un jeu se fini, on renvoi au démarrage
+	if ( mesJeux.gameIsEnd ){
+		mesJeux.choixGame=-1;
+		mesJeux.gameIsEnd=false;
+		menuPrincipal.etatMenu=6;
+	}
+
 }
 
 //--------------------------------------------------------------
@@ -44,8 +52,19 @@ void ofApp::keyPressed(int key){
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
 
+
+	/****************************** JEUX 0 BOURRINNAGE *********************************************/
+	if ( mesJeux.choixGame == 0 ){
+
+		// charge la force du marteau s'il reste du temps
+		if ( mesJeux.tpsTimerAnimHammer > 0 && ( key == OF_KEY_LEFT || key == OF_KEY_DOWN || key == OF_KEY_UP || key == OF_KEY_RIGHT ) ){
+			mesJeux.loadHammer();
+		}
+
+
+
 	/****************************** CONTROLE LES LETTRE POUR INDIQUER SON NOM *********************************************/
-	if ( menuPrincipal.etatMenu == 3 ){
+	} else if ( menuPrincipal.etatMenu == 3 ){
 
 		// Decale a gauche
 		if ( key == OF_KEY_LEFT ){
@@ -111,6 +130,8 @@ void ofApp::keyReleased(int key){
 			menuPrincipal.sequenceHistory[menuPrincipal.indexSequence] = 4;
 		}
 		menuPrincipal.indexSequence--;
+		menuPrincipal.decoupeXBomb01++;
+		if ( menuPrincipal.decoupeXBomb01 > 8 ){ menuPrincipal.decoupeXBomb01 = 8;}
 
 	/****************************** ADMINISTRATION *********************************************/
 	} else if ( menuPrincipal.etatMenu == 10 ){
@@ -129,7 +150,7 @@ void ofApp::keyReleased(int key){
 			// bouton 3
 		} else if ( key == OF_KEY_UP ){
 			menuPrincipal.optionSelectionAdminsitration++;
-			menuPrincipal.etatMenu=0;
+			menuPrincipal.etatMenu=6;
 			// bouton 4
 		} else if ( key == OF_KEY_RIGHT ){
 			if ( myPlayer.soundVolume > 0.96f ){

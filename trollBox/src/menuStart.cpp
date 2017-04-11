@@ -162,6 +162,7 @@ void menuStart::afficherMenu(){
 		// On remplace par un jeu aleatoire
 		if ( ptrMesJeux->choixGame == -1 ){
 			ptrMesJeux->choixGame = ptrMesJeux->selectGame();
+			etatMenuChoix = -1;
 		}
 
 	/************************************* ADMINISTRATION ( troll )  *****************************************/
@@ -181,11 +182,15 @@ void menuStart::afficherMenu(){
 		myPlayer->playSound("alarm01",true);
 		myPlayer->soundVolume = lastVolume;
 
-		// Affiche l'image avec le compteur
+		// Affiche l'image avec le compteur 760*290
+		bomb01.draw(260,215);
+		bomb01Chiffre.drawSubsection(721,334,20,43,decoupeXBomb01*20,0,20,43);
+
+		/* DEBUG
+		
 		ofSetColor(255,0,0);
 		ptrMaFonte->drawString(to_string(indexSequence),500,500);
 		ofSetColor(255,255,255);
-
 		ptrMaFonte->drawString(to_string(sequenceHistory[7])
 							   +to_string(sequenceHistory[6])
 							   +to_string(sequenceHistory[5])
@@ -196,12 +201,14 @@ void menuStart::afficherMenu(){
 							   +to_string(sequenceHistory[0])
 							   ,500,550);
 		ptrMaFonte->drawString( "index : " + to_string(indexSequence),500,600);
+		*/
 
 		if ( indexSequence < 0 ){
 
 			// on reinit le tout
 			myPlayer->stopSound();
 			indexSequence = 7;
+			decoupeXBomb01 = 0;
 
 			if ( sequenceHistory[7] == 1 &&
 				sequenceHistory[6] == 2 &&
@@ -225,6 +232,10 @@ void menuStart::afficherMenu(){
 
 	/************************************* CREDITS  *****************************************/
 	} else if ( etatMenu == 9 ){
+
+		if ( etatEtapeCredits == 0 ){
+		
+		}
 
 	/************************************* ADMINISTRATION  *****************************************/
 	} else if ( etatMenu == 10 ){
@@ -383,6 +394,8 @@ void menuStart::init(SoundManagement* ptrMyPlayerRecieved, ofTrueTypeFont* maFon
 	trollDance.load("trollDance.jpg");
 	menu.load("menu01.png");
 	gyrophare.load("gyrophare.png");
+	bomb01.load("bomb01.png");
+	bomb01Chiffre.load("bomb01_chiffre.jpg");
 
 	tpsBlinkPoint = ofGetElapsedTimef();
 	timeBlinkLetter = ofGetElapsedTimeMillis();

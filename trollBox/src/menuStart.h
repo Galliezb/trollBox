@@ -27,12 +27,12 @@ public:
 	2 => INSERT MORE MORE COINS
 	3 => SUCCES ! START OF TROLLBOX !
 	*/
-	int etatMenu = 6;
+	int etatMenu = 8;
 	bool endWriteUserName = false;
 	int nameIndexCharacter=0,nameNumberOfLetter=65;
 
 	// administration
-	int indexSequence=7,sequenceHistory[8],optionSelectionAdminsitration=0;
+	int indexSequence=7,sequenceHistory[8],optionSelectionAdminsitration=0,decoupeXBomb01=0;
 	// choix menu jeu
 	int etatMenuJeu=0;
 
@@ -61,10 +61,12 @@ private:
 	int etatMenuChoix = -1;
 
 	// Administration
-	ofImage gyrophare;
+	ofImage gyrophare,bomb01,bomb01Chiffre;
 	int timeBeforeAutoLeaveAdministration,timeImageGyrophare=1,posXGyrophare=0;
 	float lastVolume=1.0f;
 
+	// les Crédits
+	int etatEtapeCredits = 0;
 
 
 	// method private

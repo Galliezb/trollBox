@@ -6,7 +6,9 @@ void SoundManagement::init(){
 	string name[] = {
 		"alarm01",
 		"clap01",
-		"fail01","fail02",
+		"fail01","fail02","fail03",
+		"forceHammer01",
+		"hammer01",
 		"megaSucess01",
 		"sucess01","sucess02","sucess03",
 		"valide01","valide02","valide03",
