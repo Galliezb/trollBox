@@ -22,6 +22,7 @@
     <ClCompile Include="src\game.cpp">
       <Filter>src\classes</Filter>
     </ClCompile>
+    <ClCompile Include="src\TypingLetter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -47,6 +48,7 @@
     <ClInclude Include="src\game.h">
       <Filter>src\classes</Filter>
     </ClInclude>
+    <ClInclude Include="src\TypingLetter.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

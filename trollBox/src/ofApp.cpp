@@ -57,7 +57,7 @@ void ofApp::keyReleased(int key){
 	if ( mesJeux.choixGame == 0 ){
 
 		// charge la force du marteau s'il reste du temps
-		if ( mesJeux.tpsTimerAnimHammer > 0 && ( key == OF_KEY_LEFT || key == OF_KEY_DOWN || key == OF_KEY_UP || key == OF_KEY_RIGHT ) ){
+		if ( mesJeux.tpsTimerAnimHammer > 0 ){
 			mesJeux.loadHammer();
 		}
 
@@ -132,6 +132,13 @@ void ofApp::keyReleased(int key){
 		menuPrincipal.indexSequence--;
 		menuPrincipal.decoupeXBomb01++;
 		if ( menuPrincipal.decoupeXBomb01 > 8 ){ menuPrincipal.decoupeXBomb01 = 8;}
+
+
+	/****************************** CREDITS *********************************************/
+	} else if ( menuPrincipal.etatMenu == 10 ){
+
+		menuPrincipal.etatEtapeCredits++;
+		if ( menuPrincipal.etatEtapeCredits == 7 ){ menuPrincipal.etatMenu = 0; }
 
 	/****************************** ADMINISTRATION *********************************************/
 	} else if ( menuPrincipal.etatMenu == 10 ){

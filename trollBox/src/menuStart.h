@@ -1,6 +1,7 @@
 #pragma once
 #include "SoundManagement.h"
 #include "game.h"
+#include "TypingLetter.h"
 
 class menuStart {
 public:
@@ -27,7 +28,7 @@ public:
 	2 => INSERT MORE MORE COINS
 	3 => SUCCES ! START OF TROLLBOX !
 	*/
-	int etatMenu = 8;
+	int etatMenu = 0;
 	bool endWriteUserName = false;
 	int nameIndexCharacter=0,nameNumberOfLetter=65;
 
@@ -35,6 +36,9 @@ public:
 	int indexSequence=7,sequenceHistory[8],optionSelectionAdminsitration=0,decoupeXBomb01=0;
 	// choix menu jeu
 	int etatMenuJeu=0;
+
+	// les credits 
+	int etatEtapeCredits = 0;
 
 private:
 	
@@ -66,7 +70,11 @@ private:
 	float lastVolume=1.0f;
 
 	// les Crédits
-	int etatEtapeCredits = 0;
+	ofImage photoCredit[8];
+	int timerForTypingLetter,toDraw = 0;
+	vector<string> tabTextToDisplay[8];
+	TypingLetter displayText[8];
+	
 
 
 	// method private

@@ -233,9 +233,16 @@ void menuStart::afficherMenu(){
 	/************************************* CREDITS  *****************************************/
 	} else if ( etatMenu == 9 ){
 
-		if ( etatEtapeCredits == 0 ){
-		
+		if ( etatEtapeCredits <= 7 ){
+
+			photoCredit[etatEtapeCredits].draw(50,50);
+
+			bool next = false;
+			next = displayText[etatEtapeCredits].type();
+			if ( next ){ etatEtapeCredits++; }
+
 		}
+
 
 	/************************************* ADMINISTRATION  *****************************************/
 	} else if ( etatMenu == 10 ){
@@ -381,6 +388,96 @@ void menuStart::init(SoundManagement* ptrMyPlayerRecieved, ofTrueTypeFont* maFon
 	ptrMaFonte = maFonte;
 	ptrMesJeux = instanceDesJeux;
 
+	// les textes des crédits à afficher
+	tabTextToDisplay[0].push_back("Prenom   : Byuto");
+	tabTextToDisplay[0].push_back("Nom      : Kwouin-Chang");
+	tabTextToDisplay[0].push_back("Job      : Beta-testeur");
+	tabTextToDisplay[0].push_back("Statut   : Inconnu");
+	tabTextToDisplay[0].push_back("Note:");
+	tabTextToDisplay[0].push_back("Phobie des mauvais jeux");
+	tabTextToDisplay[0].push_back("Phobie des bugs");
+	tabTextToDisplay[0].push_back("Reve de mourir d'extase devant le jeu parfait a 69 ans");
+	tabTextToDisplay[0].push_back("Reve de mourir d'extase devant le jeu parfait a 69 ans");
+	tabTextToDisplay[0].push_back("Reve de mourir d'extase devant le jeu parfait a 69 ans");
+
+	tabTextToDisplay[1].push_back("Prenom   : Nymphne");
+	tabTextToDisplay[1].push_back("Nom      : Rhoswen");
+	tabTextToDisplay[1].push_back("Job      : Beta-testeur, beta tout court");
+	tabTextToDisplay[1].push_back("Statut   : feerique");
+	tabTextToDisplay[1].push_back("Note:");
+	tabTextToDisplay[1].push_back("Adore les fees, les poneys et les arc-en-ciels");
+	tabTextToDisplay[1].push_back("A tres peur de la pluie");
+	tabTextToDisplay[1].push_back("A encore mega plus peur des orages");
+
+	tabTextToDisplay[2].push_back("Prenom   : Akeko");
+	tabTextToDisplay[2].push_back("Nom      : Olsogo");
+	tabTextToDisplay[2].push_back("Job      : Chef de projet");
+	tabTextToDisplay[2].push_back("Statut   : Pas sage Japonais");
+	tabTextToDisplay[2].push_back("Note:");
+	tabTextToDisplay[2].push_back("Adore les poissons lune lors des eclipses");
+	tabTextToDisplay[2].push_back("Aime apporter la sagesse a son equipe");
+	tabTextToDisplay[2].push_back("Aime pisser dans les etangs au clair de lune");
+	tabTextToDisplay[2].push_back("Ne mangera pas les poissons sur lesquels il a pisse");
+
+	tabTextToDisplay[3].push_back("Prenom   : Hannery");
+	tabTextToDisplay[3].push_back("Nom      : CasseDock");
+	tabTextToDisplay[3].push_back("Job      : Optimisateur de code");
+	tabTextToDisplay[3].push_back("Statut   : Cingle et pas qu'a moitie");
+	tabTextToDisplay[3].push_back("Note:");
+	tabTextToDisplay[3].push_back("Se fait surnomme Looping");
+	tabTextToDisplay[3].push_back("Ne support pas les fuites de memoires");
+	tabTextToDisplay[3].push_back("80 caracteres maximum par ligne de code");
+	tabTextToDisplay[3].push_back("Seul le code fait loi en cas de litige");
+	tabTextToDisplay[3].push_back("Regle 1 : Si tout va bien, ne touchez a rien");
+
+	tabTextToDisplay[4].push_back("Prenom   : ACcasse");
+	tabTextToDisplay[4].push_back("Nom      : Symphozik");
+	tabTextToDisplay[4].push_back("Job      : Compositeur");
+	tabTextToDisplay[4].push_back("Statut   : A des vers au cul");
+	tabTextToDisplay[4].push_back("Note:");
+	tabTextToDisplay[4].push_back("Ne peut pas s'epempecher de bouger");
+	tabTextToDisplay[4].push_back("A extremement peur du silence qui tue");
+	tabTextToDisplay[4].push_back("Parle peu mais fait pourtant enormement de bruit");
+
+	tabTextToDisplay[5].push_back("Prenom   : Cafette");
+	tabTextToDisplay[5].push_back("Nom      : Lachaude");
+	tabTextToDisplay[5].push_back("Job      : Secretaire");
+	tabTextToDisplay[5].push_back("Statut   : Celibataire ( 0473/69.69.69 )");
+	tabTextToDisplay[5].push_back("Note:");
+	tabTextToDisplay[5].push_back("Est amie avec Nymphne");
+	tabTextToDisplay[5].push_back("A peur de Looping");
+	tabTextToDisplay[5].push_back("Fait le pire cafe au monde");
+
+	tabTextToDisplay[6].push_back("Prenom   : Buenosh");
+	tabTextToDisplay[6].push_back("Nom      : Elportosh");
+	tabTextToDisplay[6].push_back("Job      : Macon");
+	tabTextToDisplay[6].push_back("Statut   : Squatte les locaux");
+	tabTextToDisplay[6].push_back("Note:");
+	tabTextToDisplay[6].push_back("Fuit un sherif hargneux");
+	tabTextToDisplay[6].push_back("Pompe un maximum de cafe gratuitement");
+	tabTextToDisplay[6].push_back("Possede un casque bizarre qu'il ne retire jamais");
+	tabTextToDisplay[6].push_back("A peur que le ciel lui tombe sur la tete");
+
+	tabTextToDisplay[7].push_back("Prenom   : luckypasluc");
+	tabTextToDisplay[7].push_back("Nom      : ThewalkerAlive");
+	tabTextToDisplay[7].push_back("Job      : Sherif ( deconne pas mec )");
+	tabTextToDisplay[7].push_back("Statut   : decede");
+	tabTextToDisplay[7].push_back("Note:");
+	tabTextToDisplay[7].push_back("Aime manger du serpent au coin du feu");
+	tabTextToDisplay[7].push_back("Pourchassera eternellement Buenosh Elportosh");
+	tabTextToDisplay[7].push_back("Possede un cheval commme fidele compagnon");
+	tabTextToDisplay[7].push_back("Est mort en tentant de traverser l'ocean atlantique avec son cheval");
+
+	// init TypingLetter
+	displayText[0].init( ptrMyPlayerRecieved, maFonte, &tabTextToDisplay[0] );
+	displayText[1].init( ptrMyPlayerRecieved, maFonte, &tabTextToDisplay[1] );
+	displayText[2].init( ptrMyPlayerRecieved, maFonte, &tabTextToDisplay[2] );
+	displayText[3].init( ptrMyPlayerRecieved, maFonte, &tabTextToDisplay[3] );
+	displayText[4].init( ptrMyPlayerRecieved, maFonte, &tabTextToDisplay[4] );
+	displayText[5].init( ptrMyPlayerRecieved, maFonte, &tabTextToDisplay[5] );
+	displayText[6].init( ptrMyPlayerRecieved, maFonte, &tabTextToDisplay[6] );
+	displayText[7].init( ptrMyPlayerRecieved, maFonte, &tabTextToDisplay[7] );
+
 	// créer
 	ptrMaFonte->load("monospacedfont_03.ttf", 30);
 	//ptrMaFonte->setLineHeight(34.0f);
@@ -396,12 +493,21 @@ void menuStart::init(SoundManagement* ptrMyPlayerRecieved, ofTrueTypeFont* maFon
 	gyrophare.load("gyrophare.png");
 	bomb01.load("bomb01.png");
 	bomb01Chiffre.load("bomb01_chiffre.jpg");
+	photoCredit[0].load("credit1.jpg");
+	photoCredit[1].load("credit2.jpg");
+	photoCredit[2].load("credit3.jpg");
+	photoCredit[3].load("credit4.jpg");
+	photoCredit[4].load("credit5.jpg");
+	photoCredit[5].load("credit6.jpg");
+	photoCredit[6].load("credit7.jpg");
+	photoCredit[7].load("credit8.jpg");
 
 	tpsBlinkPoint = ofGetElapsedTimef();
 	timeBlinkLetter = ofGetElapsedTimeMillis();
 	timeWaitLeavingWelcome = -1; // = non encore initalisé
 	timeLoadBarFPS = ofGetElapsedTimeMillis();
 	timerTrollDance = ofGetElapsedTimeMillis();
+	timerForTypingLetter = ofGetElapsedTimeMillis();
 	
 	timeLoadBar = 1280;
 
@@ -473,6 +579,7 @@ void menuStart::valideChoixMenu(){
 
 menuStart::~menuStart(){
 }
+
 
 string menuStart::invertName(){
 
