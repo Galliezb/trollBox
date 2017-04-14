@@ -135,10 +135,13 @@ void ofApp::keyReleased(int key){
 
 
 	/****************************** CREDITS *********************************************/
-	} else if ( menuPrincipal.etatMenu == 10 ){
+	} else if ( menuPrincipal.etatMenu == 9 ){
 
 		menuPrincipal.etatEtapeCredits++;
-		if ( menuPrincipal.etatEtapeCredits == 7 ){ menuPrincipal.etatMenu = 0; }
+		if ( menuPrincipal.etatEtapeCredits == 9 ){ 
+			myPlayer.stopSound();
+			menuPrincipal.etatMenu = 0;
+		}
 
 	/****************************** ADMINISTRATION *********************************************/
 	} else if ( menuPrincipal.etatMenu == 10 ){

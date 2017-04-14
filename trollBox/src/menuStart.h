@@ -38,7 +38,7 @@ public:
 	int etatMenuJeu=0;
 
 	// les credits 
-	int etatEtapeCredits = 0;
+	int etatEtapeCredits = 7;
 
 private:
 	
@@ -74,6 +74,9 @@ private:
 	int timerForTypingLetter,toDraw = 0;
 	vector<string> tabTextToDisplay[8];
 	TypingLetter displayText[8];
+	float posDefilementY=760.f;
+	bool youpiPlayed = false;
+	float timerRebooterAfterCredit=0.0f;
 	
 
 

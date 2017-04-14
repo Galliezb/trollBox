@@ -6,7 +6,7 @@ class TypingLetter{
 public:
 	TypingLetter();
 	void init(SoundManagement* ptrMyPlayerRecieved, ofTrueTypeFont* maFonte, vector<string>* ptrStr);
-	bool type();
+	void type();
 	~TypingLetter();
 private:
 
@@ -20,6 +20,5 @@ private:
 	//bool stringMustBeDraw[10]={false,false,false,false,false,false,false,false,false,false};
 	int displayOnY[10] = {100,150,200,250,450,500,550,600,650,700};
 
-	bool isEnd = false;
 };
 

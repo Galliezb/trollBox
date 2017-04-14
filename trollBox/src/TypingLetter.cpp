@@ -13,15 +13,13 @@ void TypingLetter::init(SoundManagement* ptrMyPlayerRecieved, ofTrueTypeFont* ma
 
 }
 
-bool TypingLetter::type(){
+void TypingLetter::type(){
 
 	for (int i = 0; i< ptrVectorString->size(); i++){
 	
 		drawtypingLetter( (*ptrVectorString)[i], i );
 
 	}
-
-	return isEnd;
 
 }
 
@@ -51,20 +49,18 @@ void TypingLetter::drawtypingLetter(string str, int positionInVector){
 			ptrMaFonte->drawString( str,displayPostionX,displayOnY[positionInVector]);
 			indexStringToType++;
 			if ( indexStringToType == ptrVectorString->size()-1 ){ indexStringToType = ptrVectorString->size()-1; }
-			
-			if ( positionInVector == ptrVectorString->size()-1 ){
-				isEnd = true;
-			}
 
 		// alors on tape le caractere
 		} else {
 
 			ptrMaFonte->drawString( str.substr(0,toDraw[positionInVector]),displayPostionX,displayOnY[positionInVector]);
+			myPlayer->playSound("typingLetter01",true);
 
 			if ( timerForTypingLetter + 30 < ofGetElapsedTimeMillis() ){
 				toDraw[positionInVector]++;
-				timerForTypingLetter = ofGetElapsedTimeMillis();
+				timerForTypingLetter = ofGetElapsedTimef();
 			}
+
 		}
 
 	}

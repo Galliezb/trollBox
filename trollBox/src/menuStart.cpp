@@ -186,23 +186,6 @@ void menuStart::afficherMenu(){
 		bomb01.draw(260,215);
 		bomb01Chiffre.drawSubsection(721,334,20,43,decoupeXBomb01*20,0,20,43);
 
-		/* DEBUG
-		
-		ofSetColor(255,0,0);
-		ptrMaFonte->drawString(to_string(indexSequence),500,500);
-		ofSetColor(255,255,255);
-		ptrMaFonte->drawString(to_string(sequenceHistory[7])
-							   +to_string(sequenceHistory[6])
-							   +to_string(sequenceHistory[5])
-							   +to_string(sequenceHistory[4])
-							   +to_string(sequenceHistory[3])
-							   +to_string(sequenceHistory[2])
-							   +to_string(sequenceHistory[1])
-							   +to_string(sequenceHistory[0])
-							   ,500,550);
-		ptrMaFonte->drawString( "index : " + to_string(indexSequence),500,600);
-		*/
-
 		if ( indexSequence < 0 ){
 
 			// on reinit le tout
@@ -236,10 +219,69 @@ void menuStart::afficherMenu(){
 		if ( etatEtapeCredits <= 7 ){
 
 			photoCredit[etatEtapeCredits].draw(50,50);
+			displayText[etatEtapeCredits].type();
 
-			bool next = false;
-			next = displayText[etatEtapeCredits].type();
-			if ( next ){ etatEtapeCredits++; }
+		} else {
+		
+			
+
+			ptrMaFonte->drawString("L'equipe de developpement :",50,posDefilementY+0);
+			ptrMaFonte->drawString("Developpeur      Galliez Bruno",50,posDefilementY+50);
+			ptrMaFonte->drawString("Designer         Galliez Bruno",50,posDefilementY+100);
+			ptrMaFonte->drawString("Compositeur      Galliez Bruno",50,posDefilementY+150);
+			ptrMaFonte->drawString("Chef de projet   Mr Cascio",50,posDefilementY+200);
+			ptrMaFonte->drawString("Montage          Galliez Bruno",50,posDefilementY+250);
+
+			ptrMaFonte->drawString("Remerciements pour l'aide apporte :",50,posDefilementY+350);
+			ptrMaFonte->drawString("Mr Dedecker      Savoir, materiel et conseils au montage",50,posDefilementY+400);
+			ptrMaFonte->drawString("Mr Wilfart       Savoir, Debuggage et conseils",50,posDefilementY+450);
+			ptrMaFonte->drawString("Mde Buseyne      Savoir, Debuggage et conseils",50,posDefilementY+500);
+			ptrMaFonte->drawString("Mr Venderhaegen  Savoir et conseils au montage",50,posDefilementY+550);
+			ptrMaFonte->drawString("Mr Cascio        Savoir, materiel, idees et conseils",50,posDefilementY+600);
+			ptrMaFonte->drawString("Bapou            Materiel et aide au montage",50,posDefilementY+650);
+			ptrMaFonte->drawString("Mamou            Materiel et soutien",50,posDefilementY+700);
+			ptrMaFonte->drawString("Ma femme         Deguisement et bordel dans le garage",50,posDefilementY+750);
+
+			ptrMaFonte->drawString("Remerciements qu'il faut pas oublier :",50,posDefilementY+850);
+			ptrMaFonte->drawString("Galliez Bruno    Parce que je le vaut bien :D",50,posDefilementY+900);
+			ptrMaFonte->drawString("Electrabel       Pour fournir l'energie",50,posDefilementY+950);
+
+			ptrMaFonte->drawString("Proverbe Troll : ",50,posDefilementY+1050);
+			ptrMaFonte->drawString("Te fais pas d'bile pour la vie, toute facon t'y survivras pas.",50,posDefilementY+1100);
+			
+			ptrMaFonte->drawString("Troll Box",540,posDefilementY+1600);
+
+			posDefilementY-=0.5f;
+			if ( posDefilementY < -1240 ){
+
+				if ( !youpiPlayed ){
+
+					myPlayer->playSound("youpi01",true);
+					youpiPlayed = true;
+					timerRebooterAfterCredit = ofGetElapsedTimef();
+
+				}
+
+				// bloque le défilement
+				posDefilementY = -1240;
+
+				ofLog() << timerRebooterAfterCredit+2.0 << "<" << ofGetElapsedTimef() << " => " << etatEtapeCredits;
+
+				if ( timerRebooterAfterCredit+2.0 < ofGetElapsedTimef() ){
+
+					// reinit
+					posDefilementY=760.f;
+					etatEtapeCredits = 0;
+
+					// ajoute plus 1 et ofapp va reboot le jeu
+					etatMenu = 0;
+				}
+
+			} else {
+				if ( posDefilementY > -1000 ){
+					myPlayer->playSound("credit01",true);
+				}
+			}
 
 		}
 
@@ -425,7 +467,7 @@ void menuStart::init(SoundManagement* ptrMyPlayerRecieved, ofTrueTypeFont* maFon
 	tabTextToDisplay[3].push_back("Statut   : Cingle et pas qu'a moitie");
 	tabTextToDisplay[3].push_back("Note:");
 	tabTextToDisplay[3].push_back("Se fait surnomme Looping");
-	tabTextToDisplay[3].push_back("Ne support pas les fuites de memoires");
+	tabTextToDisplay[3].push_back("Ne supporte pas les fuites de memoires");
 	tabTextToDisplay[3].push_back("80 caracteres maximum par ligne de code");
 	tabTextToDisplay[3].push_back("Seul le code fait loi en cas de litige");
 	tabTextToDisplay[3].push_back("Regle 1 : Si tout va bien, ne touchez a rien");
@@ -435,7 +477,7 @@ void menuStart::init(SoundManagement* ptrMyPlayerRecieved, ofTrueTypeFont* maFon
 	tabTextToDisplay[4].push_back("Job      : Compositeur");
 	tabTextToDisplay[4].push_back("Statut   : A des vers au cul");
 	tabTextToDisplay[4].push_back("Note:");
-	tabTextToDisplay[4].push_back("Ne peut pas s'epempecher de bouger");
+	tabTextToDisplay[4].push_back("Ne peut pas s'empecher de bouger");
 	tabTextToDisplay[4].push_back("A extremement peur du silence qui tue");
 	tabTextToDisplay[4].push_back("Parle peu mais fait pourtant enormement de bruit");
 
