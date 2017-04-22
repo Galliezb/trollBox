@@ -1,4 +1,3 @@
-#pragma once
 #include "SoundManagement.h"
 
 void SoundManagement::init(){
@@ -18,7 +17,7 @@ void SoundManagement::init(){
 		"youpi01",
 		
 	};
-
+	/*
 	for each (string str in name){
 
 		// charge le son temporairement
@@ -26,6 +25,14 @@ void SoundManagement::init(){
 		tmp.loadSound("sound\\" + str + ".mp3");
 		// crée une copie dans la map pour l'utiliser plus tard au besoin.
 		soundPlayer[str] = tmp;
+	}
+	*/
+	for (short int i=0; i<17; i++){
+		// charge le son temporairement
+		ofSoundPlayer tmp;
+		tmp.loadSound("sound\\" + name[i] + ".mp3");
+		// crée une copie dans la map pour l'utiliser plus tard au besoin.
+		soundPlayer[(name[i])] = tmp;
 	}
 
 }
