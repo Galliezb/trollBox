@@ -30,7 +30,7 @@ void SoundManagement::init(){
 	for (short int i=0; i<17; i++){
 		// charge le son temporairement
 		ofSoundPlayer tmp;
-		tmp.loadSound("sound\\" + name[i] + ".mp3");
+		tmp.loadSound("sound/" + name[i] + ".mp3");
 		// crée une copie dans la map pour l'utiliser plus tard au besoin.
 		soundPlayer[(name[i])] = tmp;
 	}

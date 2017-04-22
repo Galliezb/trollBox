@@ -2,6 +2,7 @@
 #include "ofApp.h"
 
 
+
 //--------------------------------------------------------------
 void ofApp::setup(){
 
@@ -67,7 +68,7 @@ void ofApp::keyReleased(int key){
 	} else if ( menuPrincipal.etatMenu == 3 ){
 
 		// Decale a gauche
-		if ( key == OF_KEY_LEFT ){
+		if ( key == pinMode ){
 			menuPrincipal.changeNameRight();
 		// decale a droite
 		} else if ( key == OF_KEY_DOWN ){
