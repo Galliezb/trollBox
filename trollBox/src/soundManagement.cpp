@@ -28,7 +28,7 @@ void SoundManagement::init(){
 		soundPlayer[str] = tmp;
 	}
 
-};
+}
 
 
 void SoundManagement::playSound(string name, bool verifIfSoundIsPlaying){
