@@ -574,7 +574,7 @@ void menuStart::newModificateur(bool bt1, bool bt2, bool bt3, bool bt4){
 		if ( bt4 ){ modificateur = round( ofRandom( 0.f , 6.f ) -5  ); }
 
 	// fail les amis !
-	} else {
+	} else if {
 		myPlayer->playSound("fail01");
 	}
 
