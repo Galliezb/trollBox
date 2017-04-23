@@ -52,6 +52,8 @@ void ofApp::update(){
 				menuPrincipal.etatMenu++;
 			}
 
+			timerDetection += 200;
+
 		}
 
 		/****************************** JEUX 0 BOURRINNAGE *********************************************/
@@ -62,7 +64,7 @@ void ofApp::update(){
 				mesJeux.loadHammer();
 			}
 
-
+			timerDetection -= 200;
 
 			/****************************** CONTROLE LES LETTRE POUR INDIQUER SON NOM *********************************************/
 		} else if ( menuPrincipal.etatMenu == 3 ){
@@ -122,7 +124,7 @@ void ofApp::update(){
 
 			// detection boutons plus lente
 			if ( digitalRead(5) == 0 || digitalRead(6) == 0 || digitalRead(13) == 0 || digitalRead(19) == 0){
-				timerDetection += 1200;
+				timerDetection += 200;
 			}
 
 			/****************************** PASSWORD ADMINISTRATION *********************************************/
@@ -180,19 +182,22 @@ void ofApp::update(){
 				}
 				// bouton 2
 			} else if ( digitalRead(6) == 0 ){
-				menuPrincipal.optionSelectionAdminsitration--;
-				if ( menuPrincipal.optionSelectionAdminsitration < 0 ){ menuPrincipal.optionSelectionAdminsitration = 0 ;}
-				// bouton 3
-			} else if ( digitalRead(13) == 0 ){
-				menuPrincipal.optionSelectionAdminsitration++;
-				menuPrincipal.etatMenu=6;
-				// bouton 4
-			} else if ( digitalRead(19) == 0 ){
+
 				if ( myPlayer.soundVolume > 0.96f ){
 					myPlayer.playSound("fail01",true);
 				} else {
 					myPlayer.soundVolume+=0.05f;
 				}
+
+				// bouton 3
+			} else if ( digitalRead(13) == 0 ){
+				menuPrincipal.optionSelectionAdminsitration--;
+				if ( menuPrincipal.optionSelectionAdminsitration < 0 ){ menuPrincipal.optionSelectionAdminsitration = 0 ;}
+				// bouton 4
+			} else if ( digitalRead(19) == 0 ){
+
+				menuPrincipal.optionSelectionAdminsitration++;
+				menuPrincipal.etatMenu=6;
 
 			}
 
