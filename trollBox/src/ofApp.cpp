@@ -18,6 +18,20 @@ void ofApp::setup(){
 
 	timerDetection = ofGetElapsedTimeMillis();
 
+	/* FACE A LA TROLLBOX
+	5 = Bouton Gauche
+	6 = Bouton milieu gauche
+	13 = Bouton Milieu Droit
+	19 = Bouton Droit
+	26 = Detecteur de piÃ¨ce
+	*/
+	wiringPiSetupGpio();
+	pinMode(5,INPUT);
+	pinMode(6,INPUT);
+	pinMode(13,INPUT);
+	pinMode(19,INPUT);
+	pinMode(26,INPUT);
+
 }
 
 //--------------------------------------------------------------
@@ -26,19 +40,19 @@ void ofApp::update(){
 	// empêche les détections à moind d' 1 par 300 ms
 	if ( timerDetection+300 < ofGetElapsedTimeMillis() ){
 
-		ofLog() << "etatPin 26 " << digitalRead(26);
+		ofLog() << digitalRead(5) << " " << digitalRead(6) << " " << digitalRead(13) << " " << digitalRead(19) << " " << digitalRead(26);
 
 		/********************************* INSERTION PIECE ********************************/
 		if ( menuPrincipal.etatMenu < 3 ){
 
 			// 1 par défaut, détection  = 0
-			if ( digitalRead(26) == 0 ){
+			if ( digitalRead(37) == 0 ){
 				myPlayer.playSound("sucess01");
 				menuPrincipal.etatMenu++;
 			}
 
 		}
-
+		timerDetection = ofGetElapsedTimeMillis();
 	}
 
 	// si un jeu se fini, on renvoi au démarrage
