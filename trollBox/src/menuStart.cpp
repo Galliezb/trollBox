@@ -566,7 +566,7 @@ void menuStart::newModificateur(bool bt1, bool bt2, bool bt3, bool bt4){
 	modificateur = 0;
 
 	// combien de boutons ?
-	if ( verifOnButton > 0 && verifOnButton < 2 ){
+	if ( verifOnButton > 0 ){
 
 		if ( bt1 ){ modificateur = round( ofRandom( 0.f , 3.f ) -1.5 ); }
 		if ( bt2 ){ modificateur = round( ofRandom( 0.f , 12.f) -4  ); }
@@ -574,9 +574,9 @@ void menuStart::newModificateur(bool bt1, bool bt2, bool bt3, bool bt4){
 		if ( bt4 ){ modificateur = round( ofRandom( 0.f , 6.f ) -5  ); }
 
 	// fail les amis !
-	} else if {
+	}/* else if ( verifOnButton > 1 ) {
 		myPlayer->playSound("fail01");
-	}
+	}*/
 
 }
 
