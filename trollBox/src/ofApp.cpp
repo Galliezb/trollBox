@@ -99,6 +99,11 @@ void ofApp::update(){
 				d=true;
 			}
 
+			// detection boutons plus lente
+			if ( digitalRead(5) == 0 || digitalRead(6) == 0 || digitalRead(13) == 0 || digitalRead(19) == 0){
+				timerDetection += 200;
+			}
+
 			menuPrincipal.newModificateur(a,b,c,d);
 			/****************************** CHOIX MENU *********************************************/
 		} else if ( menuPrincipal.etatMenu == 6 ){
@@ -112,6 +117,11 @@ void ofApp::update(){
 				// changer la lettre ( ++ )
 			} else if ( digitalRead(13) == 0 || digitalRead(19) == 0 ){
 				menuPrincipal.valideChoixMenu();
+			}
+
+			// detection boutons plus lente
+			if ( digitalRead(5) == 0 || digitalRead(6) == 0 || digitalRead(13) == 0 || digitalRead(19) == 0){
+				timerDetection += 1200;
 			}
 
 			/****************************** PASSWORD ADMINISTRATION *********************************************/
@@ -133,6 +143,11 @@ void ofApp::update(){
 			menuPrincipal.decoupeXBomb01++;
 			if ( menuPrincipal.decoupeXBomb01 > 8 ){ menuPrincipal.decoupeXBomb01 = 8;}
 
+			// detection boutons plus lente
+			if ( digitalRead(5) == 0 || digitalRead(6) == 0 || digitalRead(13) == 0 || digitalRead(19) == 0){
+				timerDetection += 200;
+			}
+
 
 			/****************************** CREDITS *********************************************/
 		} else if ( menuPrincipal.etatMenu == 9 ){
@@ -143,6 +158,10 @@ void ofApp::update(){
 					myPlayer.stopSound();
 					menuPrincipal.etatMenu = 0;
 				}
+
+				// detection boutons plus lente
+				timerDetection += 1200;
+
 			}
 
 			/****************************** ADMINISTRATION *********************************************/
