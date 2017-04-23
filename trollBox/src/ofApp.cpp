@@ -23,6 +23,12 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
 
+	// simule la première insertion de pièce
+	if ( digitalRead(26) < 3 ){
+		myPlayer.playSound("sucess01");
+		menuPrincipal.etatMenu++;
+	}
+
 	// si un jeu se fini, on renvoi au démarrage
 	if ( mesJeux.gameIsEnd ){
 		mesJeux.choixGame=-1;
@@ -192,12 +198,6 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-
-	// simule la première insertion de pièce
-	if ( digitalRead(26) < 3 ){
-		myPlayer.playSound("sucess01");
-		menuPrincipal.etatMenu++;
-	}
 
 }
 
