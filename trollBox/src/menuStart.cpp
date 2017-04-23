@@ -303,14 +303,14 @@ void menuStart::afficherMenu(){
 
 		// Volume
 		if ( optionSelectionAdminsitration == 0 ){ ofSetColor(255, 0, 0);}
-		ptrMaFonte->drawString("Volume : ",50,50);
+		ptrMaFonte->drawString("Volume : ",50,150);
 		if ( optionSelectionAdminsitration == 0 ){ ofSetColor(255, 255, 255);}
 
 		ofNoFill();
-		ofDrawRectRounded(199,22,502,32,5);
+		ofDrawRectRounded(199,122,502,32,5);
 		ofSetColor(0, 255, 0);
 		ofFill();
-		ofDrawRectRounded(200,23,500*myPlayer->soundVolume,30,5);
+		ofDrawRectRounded(200,123,500*myPlayer->soundVolume,30,5);
 		ofSetColor(255,255,255);
 
 	}
@@ -448,8 +448,6 @@ void menuStart::init(SoundManagement* ptrMyPlayerRecieved, ofTrueTypeFont* maFon
 	tabTextToDisplay[0].push_back("Note:");
 	tabTextToDisplay[0].push_back("Phobie des mauvais jeux");
 	tabTextToDisplay[0].push_back("Phobie des bugs");
-	tabTextToDisplay[0].push_back("Reve de mourir d'extase devant le jeu parfait a 69 ans");
-	tabTextToDisplay[0].push_back("Reve de mourir d'extase devant le jeu parfait a 69 ans");
 	tabTextToDisplay[0].push_back("Reve de mourir d'extase devant le jeu parfait a 69 ans");
 
 	tabTextToDisplay[1].push_back("Prenom   : Nymphne");

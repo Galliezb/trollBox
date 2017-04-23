@@ -11,6 +11,7 @@ void ofApp::setup(){
 
 	// init des sons
 	myPlayer.init();
+	myPlayer.soundVolume = 1.0f;
 
 	// init classe
 	mesJeux.init(&myPlayer,&maFonte);
