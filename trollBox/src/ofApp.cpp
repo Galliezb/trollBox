@@ -1,5 +1,6 @@
 #pragma once
 #include "ofApp.h"
+#include "wiringPi.h"
 
 
 
@@ -68,7 +69,7 @@ void ofApp::keyReleased(int key){
 	} else if ( menuPrincipal.etatMenu == 3 ){
 
 		// Decale a gauche
-		if ( key == pinMode ){
+		if ( key == OF_KEY_LEFT ){
 			menuPrincipal.changeNameRight();
 		// decale a droite
 		} else if ( key == OF_KEY_DOWN ){
@@ -190,7 +191,7 @@ void ofApp::mouseDragged(int x, int y, int button){
 void ofApp::mousePressed(int x, int y, int button){
 
 	// simule la première insertion de pièce
-	if ( menuPrincipal.etatMenu < 3 ){
+	if ( digitalRead(26) < 3 ){
 		myPlayer.playSound("sucess01");
 		menuPrincipal.etatMenu++;
 	}
