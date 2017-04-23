@@ -26,6 +26,8 @@ void ofApp::update(){
 	// empêche les détections à moind d' 1 par 300 ms
 	if ( timerDetection+300 < ofGetElapsedTimeMillis() ){
 
+		ofLog() << "etatPin 26 " << digitalRead(26);
+
 		/********************************* INSERTION PIECE ********************************/
 		if ( menuPrincipal.etatMenu < 3 ){
 
