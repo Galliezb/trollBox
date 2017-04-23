@@ -38,7 +38,7 @@ public:
 	int etatMenuJeu=0;
 
 	// les credits 
-	int etatEtapeCredits = 7;
+	int etatEtapeCredits = 0;
 
 private:
 	

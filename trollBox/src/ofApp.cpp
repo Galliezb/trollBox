@@ -126,25 +126,28 @@ void ofApp::update(){
 
 			/****************************** PASSWORD ADMINISTRATION *********************************************/
 		} else if ( menuPrincipal.etatMenu == 8 ){
-			// bouton 1
-			if ( digitalRead(5) == 0 ){
-				menuPrincipal.sequenceHistory[menuPrincipal.indexSequence] = 1;
-				// bouton 2
-			} else if ( digitalRead(6) == 0 ){
-				menuPrincipal.sequenceHistory[menuPrincipal.indexSequence] = 2;
-				// bouton 3
-			} else if ( digitalRead(13) == 0 ){
-				menuPrincipal.sequenceHistory[menuPrincipal.indexSequence] = 3;
-				// bouton 4
-			} else if ( digitalRead(19) == 0 ){
-				menuPrincipal.sequenceHistory[menuPrincipal.indexSequence] = 4;
-			}
-			menuPrincipal.indexSequence--;
-			menuPrincipal.decoupeXBomb01++;
-			if ( menuPrincipal.decoupeXBomb01 > 8 ){ menuPrincipal.decoupeXBomb01 = 8;}
 
-			// detection boutons plus lente
+			
 			if ( digitalRead(5) == 0 || digitalRead(6) == 0 || digitalRead(13) == 0 || digitalRead(19) == 0){
+
+				// bouton 1
+				if ( digitalRead(5) == 0 ){
+					menuPrincipal.sequenceHistory[menuPrincipal.indexSequence] = 1;
+					// bouton 2
+				} else if ( digitalRead(6) == 0 ){
+					menuPrincipal.sequenceHistory[menuPrincipal.indexSequence] = 2;
+					// bouton 3
+				} else if ( digitalRead(13) == 0 ){
+					menuPrincipal.sequenceHistory[menuPrincipal.indexSequence] = 3;
+					// bouton 4
+				} else if ( digitalRead(19) == 0 ){
+					menuPrincipal.sequenceHistory[menuPrincipal.indexSequence] = 4;
+				}
+				menuPrincipal.indexSequence--;
+				menuPrincipal.decoupeXBomb01++;
+				if ( menuPrincipal.decoupeXBomb01 > 8 ){ menuPrincipal.decoupeXBomb01 = 8;}
+
+				// detection boutons plus lente
 				timerDetection += 200;
 			}
 
