@@ -29,5 +29,5 @@ class ofApp : public ofBaseApp{
 		ofTrueTypeFont	maFonte;
 		SoundManagement myPlayer;
 		game mesJeux;
-		
+		int timerDetection;
 };

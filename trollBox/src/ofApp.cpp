@@ -1,4 +1,3 @@
-#pragma once
 #include "ofApp.h"
 #include "wiringPi.h"
 
@@ -17,16 +16,27 @@ void ofApp::setup(){
 	mesJeux.init(&myPlayer,&maFonte);
 	menuPrincipal.init(&myPlayer,&maFonte,&mesJeux);
 
+	timerDetection = ofGetElapsedTimeMillis();
 
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 
-	// simule la première insertion de pièce
-	if ( digitalRead(26) < 3 ){
-		myPlayer.playSound("sucess01");
-		menuPrincipal.etatMenu++;
+	// empêche les détections à moind d' 1 par 300 ms
+	if ( timerDetection+300 < ofGetElapsedTimeMillis() ){
+
+		/********************************* INSERTION PIECE ********************************/
+		if ( menuPrincipal.etatMenu < 3 ){
+
+			// 1 par défaut, détection  = 0
+			if ( digitalRead(26) == 0 ){
+				myPlayer.playSound("sucess01");
+				menuPrincipal.etatMenu++;
+			}
+
+		}
+
 	}
 
 	// si un jeu se fini, on renvoi au démarrage
