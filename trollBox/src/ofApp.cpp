@@ -54,6 +54,9 @@ void ofApp::keyPressed(int key){
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
 
+	if ( key == OF_KEY_ESC ){
+		exit();
+	}
 
 	/****************************** JEUX 0 BOURRINNAGE *********************************************/
 	if ( mesJeux.choixGame == 0 ){
