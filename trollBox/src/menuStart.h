@@ -28,7 +28,7 @@ public:
 	2 => INSERT MORE MORE COINS
 	3 => SUCCES ! START OF TROLLBOX !
 	*/
-	int etatMenu = 0;
+	int etatMenu = 10;
 	bool endWriteUserName = false;
 	int nameIndexCharacter=0,nameNumberOfLetter=65;
 
@@ -38,7 +38,7 @@ public:
 	int etatMenuJeu=0;
 
 	// les credits 
-	int etatEtapeCredits = 7;
+	int etatEtapeCredits = 0;
 
 private:
 	

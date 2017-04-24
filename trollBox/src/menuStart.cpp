@@ -58,7 +58,18 @@ void menuStart::afficherMenu(){
 
 			// timer avant passage au 5
 			timeWaitLeavingWelcome = ofGetElapsedTimef();
+
+		// passe au menu suivant
 		} else if ( timeWaitLeavingWelcome+5.f < ofGetElapsedTimef() ){
+
+			// reinit le nom pour le futur enregistrement
+			name[0] = 'A';
+			for (unsigned short int i = 1; i<20; i++){
+				name[i] = ' ';
+			}
+			nameIndexCharacter = 0;
+			nameNumberOfLetter = 65;
+
 			etatMenu = 5;
 		}
 	
@@ -129,32 +140,32 @@ void menuStart::afficherMenu(){
 	} else if ( etatMenu == 6 ){
 
 		if ( etatMenuChoix == 0 ){
-			menu.drawSubsection(422,30,435,92,0,92,435,92);
-		} else {
-			menu.drawSubsection(422,30,435,92,0,0,435,92);
-		}
-		ptrMaFonte->drawString( "All games",572,90);
-		
-		if ( etatMenuChoix == 1 ){
 			menu.drawSubsection(422,160,435,92,0,92,435,92);
 		} else {
 			menu.drawSubsection(422,160,435,92,0,0,435,92);
 		}
-		ptrMaFonte->drawString( "Do not try",572,220);
+		ptrMaFonte->drawString( "All games",572,220);
 		
-		if ( etatMenuChoix == 2 ){
+		if ( etatMenuChoix == 1 ){
 			menu.drawSubsection(422,290,435,92,0,92,435,92);
 		} else {
 			menu.drawSubsection(422,290,435,92,0,0,435,92);
 		}
-		ptrMaFonte->drawString( "Administration",572,350);
+		ptrMaFonte->drawString( "Do not try",572,350);
 		
-		if ( etatMenuChoix == 3 ){
+		if ( etatMenuChoix == 2 ){
 			menu.drawSubsection(422,420,435,92,0,92,435,92);
 		} else {
 			menu.drawSubsection(422,420,435,92,0,0,435,92);
 		}
-		ptrMaFonte->drawString( "Credits",572,480);
+		ptrMaFonte->drawString( "Administration",572,480);
+		
+		if ( etatMenuChoix == 3 ){
+			menu.drawSubsection(422,550,435,92,0,92,435,92);
+		} else {
+			menu.drawSubsection(422,550,435,92,0,0,435,92);
+		}
+		ptrMaFonte->drawString( "Credits",572,610);
 		
 	/************************************* MENU CHOIX DES JEUX  *****************************************/
 	} else if ( etatMenu == 7 ){
@@ -292,21 +303,20 @@ void menuStart::afficherMenu(){
 
 		// Volume
 		if ( optionSelectionAdminsitration == 0 ){ ofSetColor(255, 0, 0);}
-		ptrMaFonte->drawString("Volume : ",50,50);
+		ptrMaFonte->drawString("Volume : ",50,150);
 		if ( optionSelectionAdminsitration == 0 ){ ofSetColor(255, 255, 255);}
 
 		ofNoFill();
-		ofDrawRectRounded(199,22,502,32,5);
+		ofDrawRectRounded(199,122,502,32,5);
 		ofSetColor(0, 255, 0);
 		ofFill();
-		ofDrawRectRounded(200,23,500*myPlayer->soundVolume,30,5);
+		ofDrawRectRounded(200,123,500*myPlayer->soundVolume,30,5);
 		ofSetColor(255,255,255);
 
 	}
 }
 
 void menuStart::changeNameRight(){
-
 
 	// si on est tout a droite, fail
 	if ( nameIndexCharacter+2 > 18 ){ 
@@ -439,8 +449,6 @@ void menuStart::init(SoundManagement* ptrMyPlayerRecieved, ofTrueTypeFont* maFon
 	tabTextToDisplay[0].push_back("Phobie des mauvais jeux");
 	tabTextToDisplay[0].push_back("Phobie des bugs");
 	tabTextToDisplay[0].push_back("Reve de mourir d'extase devant le jeu parfait a 69 ans");
-	tabTextToDisplay[0].push_back("Reve de mourir d'extase devant le jeu parfait a 69 ans");
-	tabTextToDisplay[0].push_back("Reve de mourir d'extase devant le jeu parfait a 69 ans");
 
 	tabTextToDisplay[1].push_back("Prenom   : Nymphne");
 	tabTextToDisplay[1].push_back("Nom      : Rhoswen");
@@ -566,7 +574,7 @@ void menuStart::newModificateur(bool bt1, bool bt2, bool bt3, bool bt4){
 	modificateur = 0;
 
 	// combien de boutons ?
-	if ( verifOnButton > 0 && verifOnButton < 2 ){
+	if ( verifOnButton > 0 ){
 
 		if ( bt1 ){ modificateur = round( ofRandom( 0.f , 3.f ) -1.5 ); }
 		if ( bt2 ){ modificateur = round( ofRandom( 0.f , 12.f) -4  ); }
@@ -574,9 +582,9 @@ void menuStart::newModificateur(bool bt1, bool bt2, bool bt3, bool bt4){
 		if ( bt4 ){ modificateur = round( ofRandom( 0.f , 6.f ) -5  ); }
 
 	// fail les amis !
-	} else {
+	}/* else if ( verifOnButton > 1 ) {
 		myPlayer->playSound("fail01");
-	}
+	}*/
 
 }
 

@@ -123,7 +123,7 @@ void game::drawHammer(){
 
 void game::displaytutoriel(){
 
-	if ( timer+1.0f > ofGetElapsedTimef() ){
+	if ( timer+5.0f > ofGetElapsedTimef() ){
 
 		if ( choixGame == 0 ){
 			troll01.draw(0,104,575,616);
