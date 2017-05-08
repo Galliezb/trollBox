@@ -28,7 +28,7 @@ public:
 	2 => INSERT MORE MORE COINS
 	3 => SUCCES ! START OF TROLLBOX !
 	*/
-	int etatMenu = 10;
+	int etatMenu = 0;
 	bool endWriteUserName = false;
 	int nameIndexCharacter=0,nameNumberOfLetter=65;
 
