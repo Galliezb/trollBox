@@ -34,8 +34,10 @@ void menuStart::afficherMenu(){
 
 		string descr = "Insert your name";
 
-		ptrMaFonte->drawString( descr.c_str() , 150,545);
-		ptrMaFonte->drawString( createName() , 300,585);
+		ptrMaFonte->drawString( descr.c_str() , 150,245);
+		ptrMaFonte->drawString( createName() , 300,285);
+
+
 
 		// pourquoi les lettres le décale bordel ?
 		//ptrMaFonte->drawString( "_ _ _ _ _ _ _ _ _ _" , 300,595);
