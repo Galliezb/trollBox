@@ -18,6 +18,10 @@ void SoundManagement::init(){
 		
 	};
 	/*
+
+	/* NE FONCTIONNE PAS SUR LE RASPBERRY
+	METTRE A JOUR LE COMPILATEUR GCC POUR QU'IL FONCTIONNE
+
 	for each (string str in name){
 
 		// charge le son temporairement
