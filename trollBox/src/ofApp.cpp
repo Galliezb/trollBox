@@ -1,5 +1,5 @@
 #include "ofApp.h"
-//#include "wiringPi.h"
+#include "wiringPi.h"
 
 
 
@@ -26,14 +26,14 @@ void ofApp::setup(){
 	19 = Bouton Droit
 	26 = Detecteur de piece
 	*/
-	/*
+	
 	wiringPiSetupGpio();
 	pinMode(5,INPUT);    // Bouton gauche remplacé par F ( 102 )
 	pinMode(6,INPUT);    // Bouton milieu gauche remplacé par G ( 103 )
 	pinMode(13,INPUT);   // Bouton milieu droit remplacé par H ( 104 )
 	pinMode(19,INPUT);   // bouton droite remplacé par J ( 106 )
 	pinMode(26,INPUT);   // Pièce remplacé par touche K ( 107 )
-	*/
+	
 }
 
 //--------------------------------------------------------------
@@ -48,8 +48,8 @@ void ofApp::update(){
 		if ( menuPrincipal.etatMenu < 3 ){
 
 			// 1 par défaut, détection  = 0
-			//if ( digitalRead(26) == 0 ){
-			if ( ofGetKeyPressed(107) ){
+			if ( digitalRead(26) == 0 ){
+			//if ( ofGetKeyPressed(107) ){
 				myPlayer.playSound("sucess01");
 				menuPrincipal.etatMenu++;
 			}
@@ -62,8 +62,8 @@ void ofApp::update(){
 		if ( mesJeux.choixGame == 0 ){
 
 			// charge la force du marteau s'il reste du temps
-			//if ( mesJeux.tpsTimerAnimHammer > 0 && ( digitalRead(5) == 0 || digitalRead(6) == 0 || digitalRead(13) == 0 || digitalRead(19) == 0 ) ){
-			if ( mesJeux.tpsTimerAnimHammer > 0 && ( ofGetKeyPressed(102) || ofGetKeyPressed(103) || ofGetKeyPressed(104) || ofGetKeyPressed(106) ) ){
+			if ( mesJeux.tpsTimerAnimHammer > 0 && ( digitalRead(5) == 0 || digitalRead(6) == 0 || digitalRead(13) == 0 || digitalRead(19) == 0 ) ){
+			//if ( mesJeux.tpsTimerAnimHammer > 0 && ( ofGetKeyPressed(102) || ofGetKeyPressed(103) || ofGetKeyPressed(104) || ofGetKeyPressed(106) ) ){
 				mesJeux.loadHammer();
 			}
 
@@ -73,20 +73,20 @@ void ofApp::update(){
 		} else if ( menuPrincipal.etatMenu == 3 ){
 
 			// Decale a gauche
-			//if ( digitalRead(5) == 0 ){
-			if ( ofGetKeyPressed(102) ){
+			if ( digitalRead(5) == 0 ){
+			//if ( ofGetKeyPressed(102) ){
 				menuPrincipal.changeNameRight();
 				// decale a droite
-			//} else if ( digitalRead(6) == 0 ){
-			} else if ( ofGetKeyPressed(103) ){
+			} else if ( digitalRead(6) == 0 ){
+			//} else if ( ofGetKeyPressed(103) ){
 				menuPrincipal.changeLetter(false);
 				// changer la lettre ( ++ )
-			//} else if ( digitalRead(13) == 0 ){
-			} else if ( ofGetKeyPressed(104) ){
+			} else if ( digitalRead(13) == 0 ){
+			//} else if ( ofGetKeyPressed(104) ){
 				menuPrincipal.changeLetter(true);
 				// valide le nom
-			//} else if ( digitalRead(19) == 0 ){
-			} else if ( ofGetKeyPressed(106) ){
+			} else if ( digitalRead(19) == 0 ){
+			//} else if ( ofGetKeyPressed(106) ){
 				menuPrincipal.etatMenu = 4;
 			}
 
@@ -96,16 +96,16 @@ void ofApp::update(){
 			bool a=false,b=false,c=false,d=false;
 
 			// bouton 1
-			//if ( digitalRead(5) == 0 ){
-			if ( ofGetKeyPressed(102) ){
+			if ( digitalRead(5) == 0 ){
+			//if ( ofGetKeyPressed(102) ){
 				a=true;
 				// bouton 2
-			//} else if ( digitalRead(6) == 0 ){
-			} else if ( ofGetKeyPressed(103) ){
+			} else if ( digitalRead(6) == 0 ){
+			//} else if ( ofGetKeyPressed(103) ){
 				b=true;
 				// bouton 3
-			//} else if ( digitalRead(13) == 0 ){
-			} else if ( ofGetKeyPressed(104) ){
+			} else if ( digitalRead(13) == 0 ){
+			//} else if ( ofGetKeyPressed(104) ){
 				c=true;
 				// bouton 4
 			//} else if ( digitalRead(19) == 0 ){
@@ -114,8 +114,8 @@ void ofApp::update(){
 			}
 
 			// detection boutons plus lente
-			//if ( digitalRead(5) == 0 || digitalRead(6) == 0 || digitalRead(13) == 0 || digitalRead(19) == 0){
-			if ( ofGetKeyPressed(102) || ofGetKeyPressed(103) || ofGetKeyPressed(104) || ofGetKeyPressed(106)){
+			if ( digitalRead(5) == 0 || digitalRead(6) == 0 || digitalRead(13) == 0 || digitalRead(19) == 0){
+			//if ( ofGetKeyPressed(102) || ofGetKeyPressed(103) || ofGetKeyPressed(104) || ofGetKeyPressed(106)){
 				timerDetection += 200;
 			}
 
@@ -124,24 +124,24 @@ void ofApp::update(){
 		} else if ( menuPrincipal.etatMenu == 6 ){
 			
 			// Decale a gauche
-			//if ( digitalRead(5) == 0 ){
-			if ( ofGetKeyPressed(102) ){
+			if ( digitalRead(5) == 0 ){
+			//if ( ofGetKeyPressed(102) ){
 				menuPrincipal.changeChoixMenu(false);
 				// decale a droite
-			//} else if ( digitalRead(6) == 0 ){
-			} else if ( ofGetKeyPressed(103) ){
+			} else if ( digitalRead(6) == 0 ){
+			//} else if ( ofGetKeyPressed(103) ){
 				menuPrincipal.changeChoixMenu(true);
 				// changer la lettre ( ++ )
-			//} else if ( digitalRead(13) == 0 || digitalRead(19) == 0 ){
-			} else if ( ofGetKeyPressed(104) || ofGetKeyPressed(106) ){
+			} else if ( digitalRead(13) == 0 || digitalRead(19) == 0 ){
+			//} else if ( ofGetKeyPressed(104) || ofGetKeyPressed(106) ){
 				menuPrincipal.valideChoixMenu();
 			}
 			
 
 
 			// detection boutons plus lente
-			//if ( digitalRead(5) == 0 || digitalRead(6) == 0 || digitalRead(13) == 0 || digitalRead(19) == 0){
-			if ( ofGetKeyPressed(102) || ofGetKeyPressed(103) || ofGetKeyPressed(104) || ofGetKeyPressed(106)){
+			if ( digitalRead(5) == 0 || digitalRead(6) == 0 || digitalRead(13) == 0 || digitalRead(19) == 0){
+			//if ( ofGetKeyPressed(102) || ofGetKeyPressed(103) || ofGetKeyPressed(104) || ofGetKeyPressed(106)){
 				timerDetection += 50;
 			}
 
@@ -149,24 +149,24 @@ void ofApp::update(){
 		} else if ( menuPrincipal.etatMenu == 8 ){
 
 			
-			//if ( digitalRead(5) == 0 || digitalRead(6) == 0 || digitalRead(13) == 0 || digitalRead(19) == 0){
-			if ( ofGetKeyPressed(102) || ofGetKeyPressed(103) || ofGetKeyPressed(104) || ofGetKeyPressed(106)){
+			if ( digitalRead(5) == 0 || digitalRead(6) == 0 || digitalRead(13) == 0 || digitalRead(19) == 0){
+			//if ( ofGetKeyPressed(102) || ofGetKeyPressed(103) || ofGetKeyPressed(104) || ofGetKeyPressed(106)){
 
 				// bouton 1
-				//if ( digitalRead(5) == 0 ){
-				if ( ofGetKeyPressed(102) ){
+				if ( digitalRead(5) == 0 ){
+				//if ( ofGetKeyPressed(102) ){
 					menuPrincipal.sequenceHistory[menuPrincipal.indexSequence] = 1;
 					// bouton 2
-				//} else if ( digitalRead(6) == 0 ){
-				} else if ( ofGetKeyPressed(103) ){
+				} else if ( digitalRead(6) == 0 ){
+				//} else if ( ofGetKeyPressed(103) ){
 					menuPrincipal.sequenceHistory[menuPrincipal.indexSequence] = 2;
 					// bouton 3
-				//} else if ( digitalRead(13) == 0 ){
-				} else if ( ofGetKeyPressed(104) ){
+				} else if ( digitalRead(13) == 0 ){
+				//} else if ( ofGetKeyPressed(104) ){
 					menuPrincipal.sequenceHistory[menuPrincipal.indexSequence] = 3;
 					// bouton 4
-				//} else if ( digitalRead(19) == 0 ){
-				} else if ( ofGetKeyPressed(106) ){
+				} else if ( digitalRead(19) == 0 ){
+				//} else if ( ofGetKeyPressed(106) ){
 					menuPrincipal.sequenceHistory[menuPrincipal.indexSequence] = 4;
 				}
 				menuPrincipal.indexSequence--;
@@ -181,8 +181,8 @@ void ofApp::update(){
 			/****************************** CREDITS *********************************************/
 		} else if ( menuPrincipal.etatMenu == 9 ){
 
-			//if ( digitalRead(5) == 0 || digitalRead(6) == 0 || digitalRead(13) == 0 || digitalRead(19) == 0){
-			if ( ofGetKeyPressed(102) || ofGetKeyPressed(103) || ofGetKeyPressed(104) || ofGetKeyPressed(106)){
+			if ( digitalRead(5) == 0 || digitalRead(6) == 0 || digitalRead(13) == 0 || digitalRead(19) == 0){
+			//if ( ofGetKeyPressed(102) || ofGetKeyPressed(103) || ofGetKeyPressed(104) || ofGetKeyPressed(106)){
 				menuPrincipal.etatEtapeCredits++;
 				if ( menuPrincipal.etatEtapeCredits == 9 ){ 
 					myPlayer.stopSound();
@@ -198,16 +198,16 @@ void ofApp::update(){
 		} else if ( menuPrincipal.etatMenu == 10 ){
 
 			// bouton 1
-			//if ( digitalRead(5) == 0 ){
-			if ( ofGetKeyPressed(102) ){
+			if ( digitalRead(5) == 0 ){
+			//if ( ofGetKeyPressed(102) ){
 				if ( myPlayer.soundVolume < 0.04f ){
 					myPlayer.playSound("fail01",true);
 				} else {
 					myPlayer.soundVolume-=0.05f;
 				}
 				// bouton 2
-			//} else if ( digitalRead(6) == 0 ){
-			} else if ( ofGetKeyPressed(103) ){
+			} else if ( digitalRead(6) == 0 ){
+			//} else if ( ofGetKeyPressed(103) ){
 
 				if ( myPlayer.soundVolume > 0.96f ){
 					myPlayer.playSound("fail01",true);
@@ -216,17 +216,18 @@ void ofApp::update(){
 				}
 
 				// bouton 3
-			//} else if ( digitalRead(13) == 0 ){
-			} else if ( ofGetKeyPressed(104) ){
+			} else if ( digitalRead(13) == 0 ){
+			//} else if ( ofGetKeyPressed(104) ){
 				menuPrincipal.optionSelectionAdminsitration--;
 				if ( menuPrincipal.optionSelectionAdminsitration < 0 ){ menuPrincipal.optionSelectionAdminsitration = 0 ;}
 				// bouton 4
-			//} else if ( digitalRead(19) == 0 ){
-			} else if ( ofGetKeyPressed(106) ){
+			} else if ( digitalRead(19) == 0 ){
+			//} else if ( ofGetKeyPressed(106) ){
 
 				menuPrincipal.optionSelectionAdminsitration++;
 				menuPrincipal.etatMenu=6;
-
+			
+			
 			}
 
 
