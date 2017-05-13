@@ -67,7 +67,7 @@ void ofApp::update(){
 				mesJeux.loadHammer();
 			}
 
-			timerDetection -= 200;
+			timerDetection -= 250;
 
 			/****************************** CONTROLE LES LETTRE POUR INDIQUER SON NOM *********************************************/
 		} else if ( menuPrincipal.etatMenu == 3 ){
@@ -89,6 +89,9 @@ void ofApp::update(){
 			//} else if ( ofGetKeyPressed(106) ){
 				menuPrincipal.etatMenu = 4;
 			}
+
+			timerDetection -= 150;
+
 
 			/****************************** LOADING BAR *********************************************/
 		}  else if ( menuPrincipal.etatMenu == 5 ){
@@ -142,7 +145,7 @@ void ofApp::update(){
 			// detection boutons plus lente
 			if ( digitalRead(5) == 0 || digitalRead(6) == 0 || digitalRead(13) == 0 || digitalRead(19) == 0){
 			//if ( ofGetKeyPressed(102) || ofGetKeyPressed(103) || ofGetKeyPressed(104) || ofGetKeyPressed(106)){
-				timerDetection += 50;
+				timerDetection -= 150;
 			}
 
 			/****************************** PASSWORD ADMINISTRATION *********************************************/
@@ -174,7 +177,7 @@ void ofApp::update(){
 				if ( menuPrincipal.decoupeXBomb01 > 8 ){ menuPrincipal.decoupeXBomb01 = 8;}
 
 				// detection boutons plus lente
-				timerDetection += 200;
+				//timerDetection += 200;
 			}
 
 
