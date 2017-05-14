@@ -28,7 +28,7 @@ public:
 	2 => INSERT MORE MORE COINS
 	3 => SUCCES ! START OF TROLLBOX !
 	*/
-	int etatMenu = 0;
+	int etatMenu = 6;
 	bool endWriteUserName = false;
 	int nameIndexCharacter=0,nameNumberOfLetter=65;
 
@@ -77,11 +77,12 @@ private:
 	float posDefilementY=760.f;
 	bool youpiPlayed = false;
 	float timerRebooterAfterCredit=0.0f;
-	
-
 
 	// method private
 	string invertName();
+
+	// aide bouton
+	ofImage btValider,btInterrogation,btSpam,btGauche,btHaut,btDroite,btBas;
 
 };
 

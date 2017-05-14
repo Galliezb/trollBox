@@ -37,7 +37,10 @@ void menuStart::afficherMenu(){
 		ptrMaFonte->drawString( descr.c_str() , 150,245);
 		ptrMaFonte->drawString( createName() , 300,285);
 
-
+		btDroite.draw(316,550,106,106);
+		btHaut.draw(450,550,106,106);
+		btBas.draw(574,550,106,106);
+		btValider.draw(698,550,106,106);
 
 		// pourquoi les lettres le décale bordel ?
 		//ptrMaFonte->drawString( "_ _ _ _ _ _ _ _ _ _" , 300,595);
@@ -142,32 +145,33 @@ void menuStart::afficherMenu(){
 	} else if ( etatMenu == 6 ){
 
 		if ( etatMenuChoix == 0 ){
-			menu.drawSubsection(422,160,435,92,0,92,435,92);
+			menu.drawSubsection(422,60,435,92,0,92,435,92);
 		} else {
-			menu.drawSubsection(422,160,435,92,0,0,435,92);
+			menu.drawSubsection(422,60,435,92,0,0,435,92);
 		}
-		ptrMaFonte->drawString( "All games",572,220);
+		ptrMaFonte->drawString( "All games",572,120);
 		
 		if ( etatMenuChoix == 1 ){
-			menu.drawSubsection(422,290,435,92,0,92,435,92);
+			menu.drawSubsection(422,190,435,92,0,92,435,92);
 		} else {
-			menu.drawSubsection(422,290,435,92,0,0,435,92);
+			menu.drawSubsection(422,190,435,92,0,0,435,92);
 		}
-		ptrMaFonte->drawString( "Do not try",572,350);
+		ptrMaFonte->drawString( "Do not try",572,250);
 		
 		if ( etatMenuChoix == 2 ){
-			menu.drawSubsection(422,420,435,92,0,92,435,92);
+			menu.drawSubsection(422,320,435,92,0,92,435,92);
 		} else {
-			menu.drawSubsection(422,420,435,92,0,0,435,92);
+			menu.drawSubsection(422,320,435,92,0,0,435,92);
 		}
-		ptrMaFonte->drawString( "Administration",572,480);
+		ptrMaFonte->drawString( "Administration",572,380);
 		
 		if ( etatMenuChoix == 3 ){
-			menu.drawSubsection(422,550,435,92,0,92,435,92);
+			menu.drawSubsection(422,450,435,92,0,92,435,92);
 		} else {
-			menu.drawSubsection(422,550,435,92,0,0,435,92);
+			menu.drawSubsection(422,450,435,92,0,0,435,92);
 		}
-		ptrMaFonte->drawString( "Credits",572,610);
+		ptrMaFonte->drawString( "Credits",572,510);
+
 		
 	/************************************* MENU CHOIX DES JEUX  *****************************************/
 	} else if ( etatMenu == 7 ){
@@ -436,6 +440,15 @@ string menuStart::createText(string str){
 
 
 void menuStart::init(SoundManagement* ptrMyPlayerRecieved, ofTrueTypeFont* maFonte, game* instanceDesJeux){
+
+	// les images d'aides
+	btValider.load("bouton_valider.png");
+	btInterrogation.load("bouton_interrogation.png");
+	btSpam.load("bouton_spam.png");
+	btGauche.load("bouton_gauche.png");
+	btHaut.load("bouton_haut.png");
+	btDroite.load("bouton_droite.png");
+	btBas.load("bouton_bas.png");
 
 	// Pointeur gestionnaire de sons
 	myPlayer = ptrMyPlayerRecieved;
