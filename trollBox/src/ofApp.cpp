@@ -190,7 +190,7 @@ void ofApp::update(){
 					myPlayer.stopSound();
 					menuPrincipal.etatMenu = 0;
 				} else if ( menuPrincipal.etatEtapeCredits == 8 && menuPrincipal.posDefilementY > -1240 ){ 
-					menuPrincipal.vitesseDefilementCredit=2.f;
+					menuPrincipal.vitesseDefilementCredit=5.f;
 				} else {
 					menuPrincipal.etatEtapeCredits++;
 				}
@@ -198,6 +198,8 @@ void ofApp::update(){
 				// detection boutons plus lente
 				timerDetection += 1200;
 
+			} else {
+				menuPrincipal.vitesseDefilementCredit=0.5f;
 			}
 
 		// ****************************** ADMINISTRATION *********************************************
