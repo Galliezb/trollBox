@@ -33,9 +33,9 @@ void ofApp::setup(){
 	pinMode(13,INPUT);   // Bouton milieu droit remplacé par H ( 104 )
 	pinMode(19,INPUT);   // bouton droite remplacé par J ( 106 )
 	pinMode(26,INPUT);   // Pièce remplacé par touche K ( 107 )
-	pinMode(9,OUTPUt);   // pour allumer les leds
-	pinMode(10,OUTPUt);   // pour allumer les leds
-	pinMode(11,OUTPUt);   // pour allumer les leds
+	pinMode(9,OUTPUT);   // pour allumer les leds
+	pinMode(10,OUTPUT);   // pour allumer les leds
+	pinMode(11,OUTPUT);   // pour allumer les leds
 	
 
 	timerAllumageLed = ofGetElapsedTimeMillis();
@@ -51,6 +51,7 @@ void ofApp::update(){
 		digitalWrite(11, HIGH);
 
 		timerAllumageLed = ofGetElapsedTimeMillis();
+
 	} else {
 		digitalWrite(9, LOW);
 		digitalWrite(10, LOW);
