@@ -302,7 +302,7 @@ void menuStart::afficherMenu(){
 
 				//ofLog() << timerRebooterAfterCredit+2.0 << "<" << ofGetElapsedTimef() << " => " << etatEtapeCredits;
 
-				if ( timerRebooterAfterCredit+2.0 < ofGetElapsedTimef() ){
+				if ( timerRebooterAfterCredit+5.0 < ofGetElapsedTimef() ){
 
 					// reinit
 					posDefilementY=760.f;

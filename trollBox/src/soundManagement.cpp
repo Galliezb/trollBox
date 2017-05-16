@@ -11,6 +11,7 @@ void SoundManagement::init(){
 		"hammer01",
 		"megaSucess01",
 		"sucess01","sucess02",
+		"trollbox01",
 		"typingLetter01",
 		"valide01","valide02","valide03",
 		"waiting01",
@@ -31,7 +32,7 @@ void SoundManagement::init(){
 		soundPlayer[str] = tmp;
 	}
 	*/
-	for (short int i=0; i<17; i++){
+	for (short int i=0; i<18; i++){
 		// charge le son temporairement
 		ofSoundPlayer tmp;
 		tmp.loadSound("sound/" + name[i] + ".mp3");

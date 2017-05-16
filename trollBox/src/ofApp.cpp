@@ -42,6 +42,7 @@ void ofApp::setup(){
 	
 
 	timerAllumageLed = ofGetElapsedTimeMillis();
+	timerSorciere = ofGetElapsedTimeMillis();
 }
 
 //--------------------------------------------------------------
@@ -66,6 +67,7 @@ void ofApp::update(){
 	if ( timerDetection+300 < ofGetElapsedTimeMillis() ){
 
 		timerDetection = ofGetElapsedTimeMillis();
+		
 
 		// ********************************* INSERTION PIECE ********************************
 		if ( menuPrincipal.etatMenu < 3 ){
@@ -77,6 +79,14 @@ void ofApp::update(){
 			}
 
 			timerDetection += 200;
+
+			// fait parler la sorcière en cas d'inactivité.
+			if ( timerSorciere+30000 < ofGetElapsedTimeMillis() ){
+				myPlayer.soundVolume = 0.75f;
+				myPlayer.playSound("trollbox01");
+				myPlayer.soundVolume = 1.f;
+				timerSorciere = ofGetElapsedTimeMillis()+90000;
+			}
 
 		}
 

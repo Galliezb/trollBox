@@ -32,4 +32,5 @@ class ofApp : public ofBaseApp{
 		unsigned int timerDetection;
 
 		int timerAllumageLed;
+		int timerSorciere;
 };
