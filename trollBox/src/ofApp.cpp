@@ -33,12 +33,31 @@ void ofApp::setup(){
 	pinMode(13,INPUT);   // Bouton milieu droit remplacé par H ( 104 )
 	pinMode(19,INPUT);   // bouton droite remplacé par J ( 106 )
 	pinMode(26,INPUT);   // Pièce remplacé par touche K ( 107 )
+	pinMode(9,OUTPUt);   // pour allumer les leds
+	pinMode(10,OUTPUt);   // pour allumer les leds
+	pinMode(11,OUTPUt);   // pour allumer les leds
 	*/
+
+	timerAllumageLed = ofGetElapsedTimeMillis();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	/*
+
+	if ( timerAllumageLed+1500 > ofGetElapsedTimeMillis() ){
+		
+		digitalWrite(9, HIGH);
+		digitalWrite(10, HIGH);
+		digitalWrite(11, HIGH);
+
+		timerAllumageLed = ofGetElapsedTimeMillis();
+	} else {
+		digitalWrite(9, LOW);
+		digitalWrite(10, LOW);
+		digitalWrite(11, LOW);
+	}
+
+	
 	// empêche les détections à moind d' 1 par 300 ms
 	if ( timerDetection+300 < ofGetElapsedTimeMillis() ){
 
@@ -208,7 +227,7 @@ void ofApp::update(){
 		}
 
 	}
-	*/
+	
 
 	// si un jeu se fini, on renvoi au démarrage
 	if ( mesJeux.gameIsEnd ){
@@ -244,13 +263,13 @@ void ofApp::keyReleased(int key){
 	if ( key == OF_KEY_ESC ){
 		exit();
 	}
-
+	/*
 	// empêche les détections à moind d' 1 par 300 ms
 	if ( timerDetection+300 < ofGetElapsedTimeMillis() ){
 
 		timerDetection = ofGetElapsedTimeMillis();
 
-		/********************************* INSERTION PIECE ********************************/
+		//********************************* INSERTION PIECE ********************************
 		if ( menuPrincipal.etatMenu < 3 && (key == OF_KEY_LEFT || key == OF_KEY_RIGHT || key == OF_KEY_UP || key == OF_KEY_DOWN) ){
 			
 			myPlayer.playSound("sucess01");
@@ -260,7 +279,7 @@ void ofApp::keyReleased(int key){
 
 		}
 
-		/****************************** JEUX 0 BOURRINNAGE *********************************************/
+		//****************************** JEUX 0 BOURRINNAGE *********************************************
 		if ( mesJeux.choixGame == 0 ){
 
 			// charge la force du marteau s'il reste du temps
@@ -271,7 +290,7 @@ void ofApp::keyReleased(int key){
 
 			timerDetection -= 200;
 
-			/****************************** CONTROLE LES LETTRE POUR INDIQUER SON NOM *********************************************/
+		//****************************** CONTROLE LES LETTRE POUR INDIQUER SON NOM *********************************************
 		} else if ( menuPrincipal.etatMenu == 3 ){
 
 			// Decale a gauche
@@ -292,7 +311,7 @@ void ofApp::keyReleased(int key){
 				menuPrincipal.etatMenu = 4;
 			}
 
-			/****************************** LOADING BAR *********************************************/
+		//****************************** LOADING BAR *********************************************
 		}  else if ( menuPrincipal.etatMenu == 5 ){
 
 			bool a=false,b=false,c=false,d=false;
@@ -322,7 +341,7 @@ void ofApp::keyReleased(int key){
 			}
 
 			menuPrincipal.newModificateur(a,b,c,d);
-			/****************************** CHOIX MENU *********************************************/
+		//****************************** CHOIX MENU *********************************************
 		} else if ( menuPrincipal.etatMenu == 6 ){
 
 			// Decale a gauche
@@ -347,7 +366,7 @@ void ofApp::keyReleased(int key){
 				timerDetection += 50;
 			}
 
-			/****************************** PASSWORD ADMINISTRATION *********************************************/
+		//****************************** PASSWORD ADMINISTRATION *********************************************
 		} else if ( menuPrincipal.etatMenu == 8 ){
 
 
@@ -380,7 +399,7 @@ void ofApp::keyReleased(int key){
 			}
 
 
-			/****************************** CREDITS *********************************************/
+		//****************************** CREDITS *********************************************
 		} else if ( menuPrincipal.etatMenu == 9 ){
 
 			//if ( digitalRead(5) == 0 || digitalRead(6) == 0 || digitalRead(13) == 0 || digitalRead(19) == 0){
@@ -396,7 +415,7 @@ void ofApp::keyReleased(int key){
 
 			}
 
-			/****************************** ADMINISTRATION *********************************************/
+		//****************************** ADMINISTRATION *********************************************
 		} else if ( menuPrincipal.etatMenu == 10 ){
 
 			// bouton 1
@@ -435,7 +454,7 @@ void ofApp::keyReleased(int key){
 		}
 
 	}
-
+	*/
 
 }
 

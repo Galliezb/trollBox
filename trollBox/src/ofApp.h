@@ -30,4 +30,6 @@ class ofApp : public ofBaseApp{
 		SoundManagement myPlayer;
 		game mesJeux;
 		unsigned int timerDetection;
+
+		int timerAllumageLed;
 };
