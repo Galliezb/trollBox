@@ -6,6 +6,9 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 
+	// cache la souris
+	ofHideCursor();
+
 	// fond noir
 	ofBackground(ofColor(0,0,0));
 
@@ -132,13 +135,13 @@ void ofApp::update(){
 		// ****************************** CHOIX MENU *********************************************
 		} else if ( menuPrincipal.etatMenu == 6 ){
 
-			// Decale a gauche
+			// Descend
 			if ( digitalRead(5) == 0 ){
 				menuPrincipal.changeChoixMenu(false);
-				// decale a droite
+			// Remonte
 			} else if ( digitalRead(6) == 0 ){
 				menuPrincipal.changeChoixMenu(true);
-				// changer la lettre ( ++ )
+			// changer la lettre ( ++ )
 			} else if ( digitalRead(13) == 0 || digitalRead(19) == 0 ){
 				menuPrincipal.valideChoixMenu();
 			}

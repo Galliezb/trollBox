@@ -81,6 +81,12 @@ void menuStart::afficherMenu(){
 	/*************************************  BARRE DE CHARGEMENT  *****************************************/
 	} else if ( etatMenu == 5 ){
 
+		// aide bouton
+		btSpam.draw(316,550,106,106);
+		btSpam.draw(450,550,106,106);
+		btSpam.draw(574,550,106,106);
+		btSpam.draw(698,550,106,106);
+
 
 		// barre de chargement
 		barreIn.draw(posXbarreChargement,327);
@@ -144,6 +150,12 @@ void menuStart::afficherMenu(){
 		/*************************************  MENU JEU  *****************************************/
 	} else if ( etatMenu == 6 ){
 
+		// bouton d'aide
+		btBas.draw(316,550,106,106);
+		btHaut.draw(450,550,106,106);
+		btValider.draw(574,550,106,106);
+		btValider.draw(698,550,106,106);
+
 		if ( etatMenuChoix == 0 ){
 			menu.drawSubsection(422,60,435,92,0,92,435,92);
 		} else {
@@ -184,6 +196,12 @@ void menuStart::afficherMenu(){
 
 	/************************************* ADMINISTRATION ( troll )  *****************************************/
 	} else if ( etatMenu == 8 ){
+
+		// bouton d'aide
+		btInterrogation.draw(316,550,106,106);
+		btInterrogation.draw(450,550,106,106);
+		btInterrogation.draw(574,550,106,106);
+		btInterrogation.draw(698,550,106,106);
 
 		gyrophare.drawSubsection(0,0,100,95,posXGyrophare*100,0,100,95);
 		gyrophare.drawSubsection(1180,0,100,95,posXGyrophare*100,0,100,95);
