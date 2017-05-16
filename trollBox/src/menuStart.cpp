@@ -151,10 +151,10 @@ void menuStart::afficherMenu(){
 	} else if ( etatMenu == 6 ){
 
 		// bouton d'aide
-		btBas.draw(316,550,106,106);
-		btHaut.draw(450,550,106,106);
-		btValider.draw(574,550,106,106);
-		btValider.draw(698,550,106,106);
+		btHaut.draw(416,550,106,106);
+		btBas.draw(550,550,106,106);
+		btValider.draw(674,550,106,106);
+		btValider.draw(798,550,106,106);
 
 		if ( etatMenuChoix == 0 ){
 			menu.drawSubsection(422,60,435,92,0,92,435,92);
@@ -198,10 +198,10 @@ void menuStart::afficherMenu(){
 	} else if ( etatMenu == 8 ){
 
 		// bouton d'aide
-		btInterrogation.draw(316,550,106,106);
-		btInterrogation.draw(450,550,106,106);
-		btInterrogation.draw(574,550,106,106);
-		btInterrogation.draw(698,550,106,106);
+		btInterrogation.draw(416,550,106,106);
+		btInterrogation.draw(550,550,106,106);
+		btInterrogation.draw(674,550,106,106);
+		btInterrogation.draw(798,550,106,106);
 
 		gyrophare.drawSubsection(0,0,100,95,posXGyrophare*100,0,100,95);
 		gyrophare.drawSubsection(1180,0,100,95,posXGyrophare*100,0,100,95);
@@ -286,7 +286,7 @@ void menuStart::afficherMenu(){
 			
 			ptrMaFonte->drawString("Troll Box",540,posDefilementY+1600);
 
-			posDefilementY-=0.5f;
+			posDefilementY-=vitesseDefilementCredit;
 			if ( posDefilementY < -1240 ){
 
 				if ( !youpiPlayed ){
@@ -300,7 +300,7 @@ void menuStart::afficherMenu(){
 				// bloque le défilement
 				posDefilementY = -1240;
 
-				ofLog() << timerRebooterAfterCredit+2.0 << "<" << ofGetElapsedTimef() << " => " << etatEtapeCredits;
+				//ofLog() << timerRebooterAfterCredit+2.0 << "<" << ofGetElapsedTimef() << " => " << etatEtapeCredits;
 
 				if ( timerRebooterAfterCredit+2.0 < ofGetElapsedTimef() ){
 

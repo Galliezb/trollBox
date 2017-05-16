@@ -39,6 +39,8 @@ public:
 
 	// les credits 
 	int etatEtapeCredits = 0;
+	float vitesseDefilementCredit = 0.5f;
+	float posDefilementY=760.f;
 
 private:
 	
@@ -74,7 +76,7 @@ private:
 	int timerForTypingLetter,toDraw = 0;
 	vector<string> tabTextToDisplay[8];
 	TypingLetter displayText[8];
-	float posDefilementY=760.f;
+
 	bool youpiPlayed = false;
 	float timerRebooterAfterCredit=0.0f;
 

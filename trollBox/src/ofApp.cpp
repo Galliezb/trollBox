@@ -185,10 +185,14 @@ void ofApp::update(){
 		} else if ( menuPrincipal.etatMenu == 9 ){
 
 			if ( digitalRead(5) == 0 || digitalRead(6) == 0 || digitalRead(13) == 0 || digitalRead(19) == 0){
-				menuPrincipal.etatEtapeCredits++;
+				
 				if ( menuPrincipal.etatEtapeCredits == 9 ){ 
 					myPlayer.stopSound();
 					menuPrincipal.etatMenu = 0;
+				} else if ( menuPrincipal.etatEtapeCredits == 8 && menuPrincipal.posDefilementY > -1240 ){ 
+					menuPrincipal.vitesseDefilementCredit=2.f;
+				} else {
+					menuPrincipal.etatEtapeCredits++;
 				}
 
 				// detection boutons plus lente
